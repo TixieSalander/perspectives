@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>ico-rss</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header" transform="translate(-1151.000000, -18.000000)" fill="#FFFFFF">
+            <g id="Top-nav">
+                <g>
+                    <g id="Social-icons" transform="translate(989.000000, 18.000000)">
+                        <path d="M162.000139,11.1428571 C162.000139,10.11725 162.831666,9.28571429 163.857262,9.28571429 C164.882858,9.28571429 165.714385,10.11725 165.714385,11.1428571 C165.714385,12.1684643 164.882858,13 163.857262,13 C162.831666,13 162.000139,12.1684643 162.000139,11.1428571 Z M175,13 L172.523991,13 C172.523991,7.19689286 167.803184,2.47603571 162.000139,2.47603571 L162.000139,0 C169.16817,0 175,5.83189286 175,13 Z M168.190719,13 C168.190719,9.58657143 165.413392,6.80967857 162,6.80967857 L162,4.33317857 C166.778842,4.33317857 170.666729,8.22110714 170.666729,13 L168.190719,13 Z" id="ico-rss"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

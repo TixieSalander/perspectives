@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>ico-search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header" transform="translate(-1224.000000, -18.000000)" fill="#FFFFFF">
+            <g id="Top-nav">
+                <g>
+                    <g id="Rechercher" transform="translate(1194.000000, 0.000000)">
+                        <path d="M44.707049,31.2928 L40.8876363,27.4736 C41.5870386,26.4924 42.00004,25.2938 42.00004,24 C42.00004,20.6916 39.308431,18 36.00002,18 C32.691609,18 30,20.6916 30,24 C30,27.3084 32.691609,30 36.00002,30 C37.2938243,30 38.4924283,29.587 39.4736316,28.8876 L43.2930443,32.707 C43.488045,32.9024 43.7442458,33 44.0000467,33 C44.2558475,33 44.5120484,32.9024 44.707049,32.7072 C45.0976503,32.3166 45.0976503,31.6834 44.707049,31.2928 L44.707049,31.2928 Z M36.00002,28 C33.7908126,28 32.0000067,26.2092 32.0000067,24 C32.0000067,21.7908 33.7908126,20 36.00002,20 C38.2092274,20 40.0000333,21.7908 40.0000333,24 C40.0000333,26.2092 38.2092274,28 36.00002,28 L36.00002,28 Z" id="ico-search"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
