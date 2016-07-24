@@ -53,7 +53,7 @@ gulp.task('csscomb', function () {
 });
 
 gulp.task('imagemin', () =>
-    gulp.src('assets/img/*')
+    gulp.src('assets/img/**/*')
         .pipe(imagemin())
         .pipe(gulp.dest('wp-content/themes/perspectives/img'))
 );
