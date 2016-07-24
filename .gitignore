@@ -5,9 +5,9 @@
 .bash_history
 node_modules/
 
-public/style.less
-public/img/
-public/js/
+wp-content/themes/perspectives/style.less
+wp-content/themes/perspectives/img/
+wp-content/themes/perspectives/js/
 
 # OS
 .DS_Store
