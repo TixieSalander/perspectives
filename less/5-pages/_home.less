@@ -1,0 +1,90 @@
+/* ----------------------------------------------------------- */
+/* == Configuration */
+/* ----------------------------------------------------------- */
+
+// variables
+// --------------------------------------------------------------
+
+@home-margin       : 2rem;
+
+/* ----------------------------------------------------------- */
+/* == Home page */
+/* ----------------------------------------------------------- */
+
+/* Grids
+-------------------------------------------------------------- */
+
+.home-module__grid-2-1 {
+  .unequalGrid(2, 1, @home-margin);
+}
+
+.home-module__grid-1-2 {
+  .unequalGrid(1, 2, @home-margin);
+}
+
+.home-module__grid-2 {
+	.grid(2, @home-margin);
+}
+
+/* Timeline module
+-------------------------------------------------------------- */
+/* A fix */
+
+.home-module {
+  color: #fff;
+  margin-bottom: @home-margin;
+}
+
+/* Main part module */
+
+.home-module__mainPart {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-module__mainPart > *:first-of-type {
+  margin-bottom: @home-margin;
+}
+
+.home-module__mainPart > div:nth-of-type(1) > *:nth-of-type(n) {
+  margin-bottom: -@home-margin;
+}
+
+/* Side part module */
+
+.home-module__sidePart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-module__sidePart > *:nth-of-type(1) {
+  margin-bottom: @home-margin;
+}
+
+/* Individual modules
+-------------------------------------------------------------- */
+
+/* Big module */
+
+.home-moduleBig {
+  height: 36rem;
+}
+
+/* Medium module */
+
+.home-moduleMedium {
+  height: 40rem;
+}
+
+/* High module */
+
+.home-moduleHigh {
+  height: 44rem;
+}
+
+/* Small module */
+
+.home-moduleSmall {
+  height: 32rem;
+}

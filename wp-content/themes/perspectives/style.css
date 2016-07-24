@@ -1,4 +1,4 @@
-/* grids
+/* to rgb
 -------------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* == reset */
@@ -1052,6 +1052,314 @@ a.catNav__link:active a.catNav__link.active {
 .footer a:hover,
 .footer a:visited {
   color: #653D74;
+}
+/* ----------------------------------------------------------- */
+/* == Configuration */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* == Postformat box */
+/* ----------------------------------------------------------- */
+/* Post format Article
+-------------------------------------------------------------- */
+.fpostArticle {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.2rem;
+  color: #352639;
+  text-align: center;
+  text-decoration: none;
+}
+.fpostArticle__image {
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  max-height: 360rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+.fpostArticle__image img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 80rem;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.fpostArticle__content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 2.5rem 2rem 3rem;
+  background: #fff;
+}
+.fpostArticle__title {
+  margin: 0;
+  color: #352639;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+.fpostArticle__cat {
+  margin-top: 2rem;
+  color: #00C1B6;
+  font-size: 1.6rem;
+}
+.fpostArticle__cat svg {
+  margin-right: 1rem;
+}
+.fpostArticle__cat svg path {
+  fill: #00C1B6;
+}
+/* Big module */
+.home-moduleBig.fpostArticle {
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.home-moduleBig .fpostArticle__content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 3rem;
+  width: calc(51%);
+  background-color: #00C1B6;
+}
+.home-moduleBig .fpostArticle__title {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex: 1;
+  flex: 1;
+  color: #fff;
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+.home-moduleBig .fpostArticle__cat {
+  color: #fff;
+}
+.home-moduleBig .fpostArticle__cat svg path {
+  fill: #fff;
+}
+/* Small module */
+.home-moduleSmall .fpostArticle__content {
+  padding: 2rem 2rem 3rem;
+}
+.home-moduleSmall .fpostArticle__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+.home-moduleSmall .fpostArticle__cat {
+  margin-top: 1.5rem;
+}
+/* Postformat Dossier
+-------------------------------------------------------------- */
+.fpostDossier {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 3rem;
+  border-radius: 0.2rem;
+  background: #fff;
+  color: #352639;
+  text-decoration: none;
+  cursor: pointer;
+}
+.fpostDossier__title {
+  margin: 0;
+  color: #352639;
+  font-weight: bold;
+  font-size: 2.8rem;
+  line-height: 3.8rem;
+}
+.fpostDossier__extract {
+  margin-top: 1rem;
+  color: #4e4b4f;
+  font-size: 1.5rem;
+  font-family: "Lora", Georgia, Times, "Times New Roman", serif;
+  line-height: 2.5rem;
+}
+.fpostDossier__cat {
+  color: #00C1B6;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.fpostDossier__cat svg {
+  margin-right: 1rem;
+}
+.fpostDossier__cat svg path {
+  fill: #00C1B6;
+}
+/* Big module */
+.home-moduleBig .fpostDossier__title {
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+.home-moduleBig .fpostDossier__extract {
+  font-size: 2.4rem;
+  line-height: 3.4rem;
+}
+.home-moduleBig .fpostDossier__cat {
+  text-align: right;
+}
+/* High module */
+.home-moduleHigh .fpostDossier__title {
+  font-size: 3rem;
+}
+.home-moduleHigh .fpostDossier__extract {
+  font-size: 1.6rem;
+}
+/* Small module */
+.home-moduleSmall .fpostDossier__content {
+  padding: 2rem 2rem 3rem;
+}
+.home-moduleSmall .fpostDossier__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+/* Postformat video
+-------------------------------------------------------------- */
+.fpostVideo {
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0.2rem;
+  background: #fff;
+  background: no-repeat center;
+  background-size: cover;
+  text-align: center;
+  cursor: pointer;
+}
+.fpostVideo__content {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 3rem;
+  width: 100%;
+  background-color: rgba(0, 193, 182, 0.6);
+}
+.fpostVideo__title {
+  margin: 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+.fpostVideo__cat {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.fpostVideo__cat svg {
+  margin-right: 1rem;
+}
+.fpostVideo__cat svg path {
+  fill: #fff;
+}
+.fpostVideo:hover .fpostVideo__playTriangle {
+  fill: #fff;
+}
+/* Big module */
+.home-moduleBig .fpostVideo__title {
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+/* Small module */
+.home-moduleSmall .fpostVideo__title {
+  font-size: 2.6rem;
+  line-height: 3.5rem;
+}
+/* ----------------------------------------------------------- */
+/* == Configuration */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* == Home page */
+/* ----------------------------------------------------------- */
+/* Grids
+-------------------------------------------------------------- */
+.home-module__grid-2-1 > :nth-child(odd) {
+  width: calc(66.66666666666667% - 1rem);
+}
+.home-module__grid-2-1 > :nth-child(even) {
+  width: calc(33.333333333333336% - 1rem );
+  margin-left: 2rem;
+}
+.home-module__grid-1-2 > :nth-child(odd) {
+  width: calc(33.333333333333336% - 1rem);
+}
+.home-module__grid-1-2 > :nth-child(even) {
+  width: calc(66.66666666666667% - 1rem );
+  margin-left: 2rem;
+}
+.home-module__grid-2 {
+  margin-left: -2rem;
+}
+.home-module__grid-2 > * {
+  width: calc(100% * 1 / 2 - 2rem);
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+/* Timeline module
+-------------------------------------------------------------- */
+/* A fix */
+.home-module {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+/* Main part module */
+.home-module__mainPart {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.home-module__mainPart > *:first-of-type {
+  margin-bottom: 2rem;
+}
+.home-module__mainPart > div:nth-of-type(1) > *:nth-of-type(n) {
+  margin-bottom: -2rem;
+}
+/* Side part module */
+.home-module__sidePart {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.home-module__sidePart > *:nth-of-type(1) {
+  margin-bottom: 2rem;
+}
+/* Individual modules
+-------------------------------------------------------------- */
+/* Big module */
+.home-moduleBig {
+  height: 36rem;
+}
+/* Medium module */
+.home-moduleMedium {
+  height: 40rem;
+}
+/* High module */
+.home-moduleHigh {
+  height: 44rem;
+}
+/* Small module */
+.home-moduleSmall {
+  height: 32rem;
 }
 /* ----------------------------------------------------------- */
 /* == rwd -> large */
