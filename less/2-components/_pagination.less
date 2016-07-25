@@ -9,8 +9,7 @@
 
 
 @pagination-border-radius  : 2px;
-@pagination-border         : 1px solid grey;
-@pagination-hover-color    : @color-secondary;
+@pagination-hover-color    : @color-quaternary;
 @pagination-current-bg     : @color-primary;
 @pagination-current-color  : #fff;
 
@@ -20,35 +19,72 @@
 /* ----------------------------------------------------------- */
 
 .pagination {
-	display: inline-block;
-	margin: 20px 0;
-	border-radius: 4px;
+	margin-top: 2rem;
+	text-align: center;
 }
 
-.pagination,
-.pagination li {
+/* More button
+-------------------------------------------------------------- */
+
+.pagination__more:link,
+.pagination__more:visited {
+	display: block;
+	margin-bottom: 2rem;
+	padding: 1.7rem 2rem 1.8rem;
+	width: 100%;
+	border-radius: @pagination-border-radius;
+	background: @color-tertiary;
+	color: @color-light-text;
+	text-decoration: none;
+	font-size: 2rem;
+}
+
+.pagination__more:hover,
+.pagination__more:active {
+	background-color: @color-quaternary;
+}
+
+/* Pagination numbers list
+-------------------------------------------------------------- */
+
+.pagination__list {
+	display: flex;
+	justify-content: center;
 	margin: 0;
+	margin-bottom: 2rem;
 	padding: 0;
 }
 
-.pagination li {
-	display: inline-block;
-	margin: 0 3px 1em;
+.pagination__item {
+	overflow: hidden;
 	list-style-type: none;
 }
 
-.pagination li a,
-.pagination li > span {
-	padding: .3em .6em;
-	border: @pagination-border;
-	border-radius: @pagination-border-radius;
+.pagination__item:first-of-type {
+	border-radius: @pagination-border-radius 0 0 @pagination-border-radius;
 }
 
-.pagination li a:hover {
-	color: @pagination-hover-color;
+.pagination__item:last-of-type {
+	border-radius: 0 @pagination-border-radius @pagination-border-radius 0;
 }
 
-.pagination li.current a {
-	background-color: @pagination-current-bg;
-	color: @pagination-current-color;
+.pagination__itemContent {
+	display: inline-block;
+	padding: 1.7rem 2rem;
+	background: #fff;
+	color: @color-dark-text;
+	text-decoration: none;
+}
+
+.pagination__itemContent--current,
+.pagination__itemContent:hover {
+	background-color: @color-tertiary;
+	color: @color-light-text;
+}
+
+.pagination__itemContent--desactivated,
+.pagination__itemContent--desactivated:hover {
+	background-color: #cfafd8;
+	color: @color-light-text;
+	cursor: default;
 }
