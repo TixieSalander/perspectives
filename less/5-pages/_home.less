@@ -23,6 +23,8 @@
 }
 
 .home-module__grid-2 {
+  flex: 1;
+
 	.grid(2, @home-margin);
 }
 
@@ -31,8 +33,8 @@
 /* A fix */
 
 .home-module {
-  color: #fff;
   margin-bottom: @home-margin;
+  color: #fff;
 }
 
 /* Main part module */
@@ -68,23 +70,25 @@
 /* Big module */
 
 .home-moduleBig {
-  height: 36rem;
+  min-height: 36rem;
 }
 
 /* Medium module */
 
 .home-moduleMedium {
-  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* High module */
 
 .home-moduleHigh {
-  height: 44rem;
+  min-height: ~"calc(55% - 10px)";
 }
 
 /* Small module */
 
 .home-moduleSmall {
-  height: 32rem;
+  min-height: ~"calc(45% - 10px)";
 }
