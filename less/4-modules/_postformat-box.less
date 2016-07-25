@@ -23,7 +23,8 @@
   flex: 1;
   overflow: hidden;
   max-height: 360rem;
-  background: @color-gray-10;
+  background: center no-repeat;
+  background-size: cover;
 }
 
 .fpostArticle__image img {
@@ -41,6 +42,11 @@
   justify-content: space-between;
   padding: 2.5rem 2rem 3rem;
   background: #fff;
+}
+
+.fpostArticle__image {
+  flex: 1;
+  min-height: 15rem;
 }
 
 .fpostArticle__title {
@@ -75,7 +81,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 3rem;
-  width: calc(50% + 1rem);
+  width: ~"calc(50% + 1rem)";
   background-color: @color-tertiary;
 }
 
@@ -97,7 +103,17 @@
   fill: @color-light-text;
 }
 
+/* High module */
+
+.home-moduleHigh .fpostArticle__image {
+  min-height: 24rem;
+}
+
 /* Small module */
+
+.home-moduleSmall .fpostArticle__image {
+  flex: 1;
+}
 
 .home-moduleSmall .fpostArticle__content {
   padding: 2rem 2rem 3rem;
@@ -213,6 +229,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1;
   padding: 3rem;
   width: 100%;
   background-color: @result;
@@ -226,6 +243,10 @@
   font-weight: bold;
   font-size: 3rem;
   line-height: 4rem;
+}
+
+.fpostVideo__play {
+  padding: .5rem;
 }
 
 .fpostVideo__cat {
