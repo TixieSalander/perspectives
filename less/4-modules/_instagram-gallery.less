@@ -1,0 +1,40 @@
+/* ----------------------------------------------------------- */
+/* == Instagram gallery */
+/* ----------------------------------------------------------- */
+
+.instaGallery {
+  display: flex;
+  overflow-x: hidden;
+  height: 30rem;
+  background-color: #1d1d1d;
+}
+
+.instaGallery__item {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.instaGallery__link {
+  overflow: hidden;
+  width: 30rem;
+  height: 30rem;
+  transition: all .15s ease-in-out;
+}
+
+.instaGallery__link:hover {
+  opacity: .8;
+}
+.instaGallery__link:hover .instaGallery__image {
+  transform: scale(1.1);
+}
+
+img.instaGallery__image {
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 80rem;
+  transition: all .15s ease-in-out;
+
+  object-fit: cover;
+  object-position: center;
+}
