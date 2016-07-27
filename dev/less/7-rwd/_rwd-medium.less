@@ -4,4 +4,71 @@
 
 @media (max-width: @medium) {
 
+  /* ----------------------------------------------------------- */
+  /* == Grids */
+  /* ----------------------------------------------------------- */
+
+
+  /* ----------------------------------------------------------- */
+  /* == Home page */
+  /* ----------------------------------------------------------- */
+
+  @home-margin-m       : 2rem;
+
+  .home-module {
+    margin-bottom: 0;
+  }
+
+  .home-module__grid-1-m {
+    .grid(1, @home-margin-m);
+  }
+
+  .home-module__sidePart-m {
+    .grid(2);
+  }
+
+  .home-module__sidePart-m:nth-child(n) {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------- */
+  /* == post format */
+  /* ----------------------------------------------------------- */
+
+  /* Small article module */
+
+  .home-moduleSmall .fpostArticle__image {
+    flex: 1;
+  }
+
+  .home-moduleSmall .fpostArticle__content {
+    padding: 2.5rem 2rem 3rem;
+  }
+
+  .home-moduleSmall .fpostArticle__title {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
+  .home-moduleSmall .fpostArticle__cat {
+    margin-top: 2rem;
+  }
+
+  /* Small dossier module */
+
+  .home-moduleSmall .fpostDossier__title {
+    font-size: 3rem;
+    line-height: 3.8rem;
+  }
+
+  /* Small video module */
+
+  .home-moduleSmall .fpostVideo__title {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+
 }
