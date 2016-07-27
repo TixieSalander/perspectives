@@ -5,14 +5,14 @@
 	align-items: stretch;
 }
 
-[class*="grid-"] > * {
+[class*="grid-"] > *:nth-child(n) {
 	flex: 0 0 auto;
 	display: block; /* IE fix */
 }
 
 // equal grid no gutter (when gutter = 0)
 .grid(@number:@number, @gutter:@gutter) when (@gutter = 0) {
-	& > * {
+	& > *:nth-child(n) {
 		width: ~'calc(100% * 1 / @{number})';
 	}
 }
@@ -23,7 +23,7 @@
 		margin-left: -@gutter;
 	}
 
-	& > * {
+	& > *:nth-child(n) {
 		width: ~'calc(100% * 1 / @{number} - @{gutter})';
 		margin-left: @gutter;
 		margin-bottom: @gutter
