@@ -5,7 +5,7 @@
 	align-items: stretch;
 }
 
-[class*="grid-"] > *:nth-child(n) {
+[class*="grid-"] > * {
 	flex: 0 0 auto;
 	display: block; /* IE fix */
 }
@@ -19,7 +19,7 @@
 
 // equal grid with gutter (avoid percentage since it doesn't work for margin bottom)
 .grid(@number:@number, @gutter:@gutter) {
-	& {
+	&:nth-child(n) {
 		margin-left: -@gutter;
 	}
 
