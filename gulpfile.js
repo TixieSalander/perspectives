@@ -20,18 +20,6 @@ var paths = {
 	},
 	copyjs: {
 		watch: 'dev/assets/js/**/*.*',
-	},
-	csscomb : {
-		src: [
-			'dev/less/**',
-			'!less/1.base/_00-mixins.less',
-			'!less/1.base/_05-spacing.less',
-			'!less/1.base/_07-width.less',
-			'!less/1.base/_08-grid.less',
-			'!less/2.structure/_02-icons.less',
-			'!less/5.vendors/**'
-		],
-		dest: 'dev/less/'
 	}
 };
 
@@ -44,12 +32,6 @@ gulp.task('less', function () {
 		}))
 		.pipe(gulp.dest(paths.less.dest))
 		.pipe(reload({stream:true}));
-});
-
-gulp.task('csscomb', function () {
-	gulp.src(paths.csscomb.src)
-		.pipe(csscomb())
-		.pipe(gulp.dest(paths.csscomb.dest));
 });
 
 gulp.task('imagemin', () =>
