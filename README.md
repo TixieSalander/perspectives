@@ -12,7 +12,13 @@ Try
 npm install
 ```
 
-2) Launch a local server that monitor changes
+2) Build files
+
+```
+gulp
+```
+
+3) If you want launch a local server that monitor changes
 
 ```
 gulp watch

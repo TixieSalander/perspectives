@@ -85,4 +85,4 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(paths.copyjs.watch, ['copyjs']);
 });
 
-gulp.task('default', ['less']);
+gulp.task('default', ['less', 'imagemin', 'copyjs']);
