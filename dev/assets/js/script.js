@@ -94,6 +94,7 @@ var topSearch = function() {
   var $searchButton = document.querySelector('[data-js="topSearchButton"]');
   var $search = document.querySelector('[data-js="search"]');
   var $searchClose = document.querySelector('[data-js="topSearchClose"]');
+  var $searchInput = document.querySelector('[data-js="topSearchInput"]');
 
   function addEventListeners() {
     $searchButton.addEventListener("click", toggleSearch, false);
@@ -119,6 +120,7 @@ var topSearch = function() {
 
   function showSearch() {
     $search.classList.add("search--show");
+    $searchInput.focus();
   }
 
 
