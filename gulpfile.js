@@ -41,7 +41,7 @@ gulp.task('imagemin', () =>
 );
 
 gulp.task('copyjs', () =>
-	gulp.src('assets/js/**/*')
+	gulp.src('dev/assets/js/**/*')
 		.pipe(gulp.dest('js'))
 );
 
