@@ -57,7 +57,7 @@
 					</a>
 				</li>
 			</ul>
-			<button class="topSearch"><img class="topSearch__icon" src="img/ico-search.svg" alt="Rechercher" /></button>
+			<button class="topSearch" data-js="topSearchButton"><img class="topSearch__icon" src="img/ico-search.svg" alt="Rechercher" /></button>
 		</div>
 	</div>
 	<!-- Main header -->
@@ -504,6 +504,20 @@
 				</li>
 			</ul>
 		</div>
+	</div>
+
+	<!-- Search module -->
+
+	<div class="search" data-js="search">
+			<button class="search__close" data-js="topSearchClose">
+				<img src="/img/ico-close.svg" alt="X" />
+			</button>
+			<form class="search__form">
+				<input class="search__input" type="search" placeholder="Rechercher..."/>
+				<button class="search__searchButton" role="button" type="submit">
+					<img src="/img/ico-search.svg" alt="Rechercher" />
+				</button>
+			</form>
 	</div>
 
 	<script src="/js/script.js"></script>

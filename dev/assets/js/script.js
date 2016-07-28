@@ -84,3 +84,46 @@ var mobileMenu = function() {
 	}
 }();
 mobileMenu.init();
+
+var topSearch = function() {
+
+  function init() {
+		addEventListeners();
+	}
+
+  var $searchButton = document.querySelector('[data-js="topSearchButton"]');
+  var $search = document.querySelector('[data-js="search"]');
+  var $searchClose = document.querySelector('[data-js="topSearchClose"]');
+
+  function addEventListeners() {
+    $searchButton.addEventListener("click", toggleSearch, false);
+    $searchClose.addEventListener("click", toggleSearch, false);
+  }
+
+  function toggleSearch() {
+    if (!isSearchOpen()) {
+      showSearch();
+    }
+    else {
+      hideSearch();
+    }
+  }
+
+  function isSearchOpen() {
+    return $search.classList.contains("search--show");
+  }
+
+  function hideSearch() {
+    $search.classList.remove("search--show");
+  }
+
+  function showSearch() {
+    $search.classList.add("search--show");
+  }
+
+
+  return {
+		init: init
+	}
+}();
+topSearch.init();
