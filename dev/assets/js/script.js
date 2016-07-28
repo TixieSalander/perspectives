@@ -1,12 +1,12 @@
-(function () {
-  "use strict";
+var mobileMenu = function() {
 
+  function init() {
+		addEventListeners();
+	}
   var $menuIcon = document.querySelector('[data-js="mobileMenuButton"]');
   var $menu = document.querySelector('[data-js="mobileMenu"]');
   var $menuClose = document.querySelector('[data-js="mobileMenuClose"]');
   var $menuOverlay = document.querySelector('[data-js="mobileOverlay"]');
-
-  addEventListeners();
 
   function addEventListeners() {
     // document.addEventListener("transitionend", transitionEnd);
@@ -78,4 +78,9 @@
       hideMenu();
     }
   }
-})();
+
+  return {
+		init: init
+	}
+}();
+mobileMenu.init();
