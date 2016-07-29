@@ -3,17 +3,18 @@
 /* ----------------------------------------------------------- */
 
 @media (max-width: @medium) {
+  /* ----------------------------------------------------------- */
+  /* == Home page */
+  /* ----------------------------------------------------------- */
+  @home-margin-m       : 2rem;
 
   /* ----------------------------------------------------------- */
   /* == Grids */
   /* ----------------------------------------------------------- */
 
-
-  /* ----------------------------------------------------------- */
-  /* == Home page */
-  /* ----------------------------------------------------------- */
-
-  @home-margin-m       : 2rem;
+  .grid-2-m {
+    .grid(2);
+  }
 
   .home-module {
     margin-bottom: 0;
@@ -28,10 +29,10 @@
   }
 
   .home-module__sidePart-m:nth-child(n) {
-    width: 100%;
-    margin-left: 0;
     flex-direction: row;
     margin-bottom: 0;
+    margin-left: 0;
+    width: 100%;
   }
 
   /* ----------------------------------------------------------- */
@@ -78,4 +79,69 @@
   .articleList__grid-list-m {
     .grid(2);
   }
+
+  /* ----------------------------------------------------------- */
+  /* == Single article */
+  /* ----------------------------------------------------------- */
+
+  .single-head {
+    display: block;
+    flex: initial;
+    width: 100%;
+  }
+
+  /* Author part
+  -------------------------------------------------------------- */
+
+  .single-author {
+    flex-direction: row;
+    flex-wrap: wrap;
+    order: 1;
+    width: 100%;
+  }
+
+  .single-author__title {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .single-author__avatar {
+    margin-bottom: 0;
+  }
+
+  .single-author__about {
+    padding-left: 2rem;
+    width: ~'calc(100% - 12.5rem)';
+    text-align: left;
+  }
+
+  .single-author__button {
+    display: inline-block;
+  }
+
+  .single-share {
+    order: 2;
+  }
+
+  .single-article__content p {
+    margin: 0 5%;
+    margin-bottom: 3rem;
+  }
+
+  .single-article__content iframe {
+    margin: 2rem 0;
+    min-height: 50vw;
+    width: 100%;
+  }
+
+  .single-article__content img.alignleft {
+    margin-left: -5%;
+  }
+
+  .single-suggestion__title {
+    font-size: 2.5rem;
+  }
+
 }
