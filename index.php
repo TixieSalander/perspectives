@@ -9,7 +9,7 @@
 				<div class="home-module__mainPart">
 					<!-- une tuile -->
 					<a class="home-moduleBig fpostArticle">
-						<div class="fpostArticle__image" style="background-image: url('/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
+						<div class="fpostArticle__image" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
 						<div class="fpostArticle__content">
 							<h2 class="fpostArticle__title">Phallaina — La première bande défilée</h2>
 							<div class="fpostArticle__cat">
@@ -23,7 +23,7 @@
 					<div class="home-module__grid-2 home-module__grid-1-s">
 						<!-- une tuile -->
 						<a class="home-moduleMedium fpostArticle">
-							<div class="fpostArticle__image" style="background-image: url('/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
+							<div class="fpostArticle__image" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
 							<div class="fpostArticle__content">
 								<h2 class="fpostArticle__title">Phallaina — La première bande défilée</h2>
 								<div class="fpostArticle__cat">
@@ -36,7 +36,7 @@
 						</a>
 						<!-- une tuile -->
 						<a class="home-moduleMedium fpostArticle">
-							<div class="fpostArticle__image" style="background-image: url('/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
+							<div class="fpostArticle__image" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
 							<div class="fpostArticle__content">
 								<h2 class="fpostArticle__title">Phallaina — La première bande défilée</h2>
 								<div class="fpostArticle__cat">
@@ -52,7 +52,7 @@
 				<div class="home-module__sidePart home-module__sidePart-m home-module__sidePart-s">
 					<!-- une tuile -->
 					<a class="home-moduleHigh fpostArticle">
-						<div class="fpostArticle__image" style="background-image: url('/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
+						<div class="fpostArticle__image" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
 						<div class="fpostArticle__content">
 							<h2 class="fpostArticle__title">Phallaina — La première bande défilée</h2>
 							<div class="fpostArticle__cat">
@@ -65,7 +65,7 @@
 					</a>
 					<!-- une tuile -->
 					<a class="home-moduleSmall fpostArticle">
-						<div class="fpostArticle__image" style="background-image: url('/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
+						<div class="fpostArticle__image" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/Phallaina_promo_07-1024-524.jpg');"></div>
 						<div class="fpostArticle__content">
 							<h2 class="fpostArticle__title">Slap It : Une lampe en forme de fessier s’allumant par pression</h2>
 							<div class="fpostArticle__cat">
@@ -154,7 +154,7 @@
 			<div class="home-module__grid-2-1 home-module__grid-1-m">
 				<div class="home-module__mainPart">
 					<!-- une tuile -->
-					<a class="home-moduleBig fpostVideo" style="background-image: url('img/demo/miniature_loewy-1024-576.jpg')">
+					<a class="home-moduleBig fpostVideo" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/miniature_loewy-1024-576.jpg')">
 						<div class="fpostVideo__content">
 							<h2 class="fpostVideo__title">L'homme qui créa la bouteille de Coca-Cola</h2>
 							<div class="fpostVideo__play">
@@ -172,7 +172,7 @@
 					</a>
 					<div class="home-module__grid-2 home-module__grid-1-s">
 						<!-- une tuile -->
-						<a class="home-moduleMedium fpostVideo" style="background-image: url('img/demo/miniature_loewy-1024-576.jpg')">
+						<a class="home-moduleMedium fpostVideo" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/miniature_loewy-1024-576.jpg')">
 							<div class="fpostVideo__content">
 								<h2 class="fpostVideo__title">L'homme qui créa la bouteille de Coca-Cola</h2>
 								<div class="fpostVideo__play">
@@ -189,7 +189,7 @@
 							</div>
 						</a>
 						<!-- une tuile -->
-						<a class="home-moduleMedium fpostVideo" style="background-image: url('img/demo/miniature_loewy-1024-576.jpg')">
+						<a class="home-moduleMedium fpostVideo" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/miniature_loewy-1024-576.jpg')">
 							<div class="fpostVideo__content">
 								<h2 class="fpostVideo__title">L'homme qui créa la bouteille de Coca-Cola</h2>
 								<div class="fpostVideo__play">
@@ -209,7 +209,7 @@
 				</div>
 				<div class="home-module__sidePart home-module__sidePart-m home-module__sidePart-s">
 					<!-- une tuile -->
-					<a class="home-moduleHigh fpostVideo" style="background-image: url('img/demo/miniature_loewy-1024-576.jpg')">
+					<a class="home-moduleHigh fpostVideo" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/miniature_loewy-1024-576.jpg')">
 						<div class="fpostVideo__content">
 							<h2 class="fpostVideo__title">L'homme qui créa la bouteille de Coca-Cola</h2>
 							<div class="fpostVideo__play">
@@ -226,7 +226,7 @@
 						</div>
 					</a>
 					<!-- une tuile -->
-					<a class="home-moduleSmall fpostVideo" style="background-image: url('img/demo/miniature_loewy-1024-576.jpg')">
+					<a class="home-moduleSmall fpostVideo" style="background-image: url('<?= bloginfo("template_directory") ?>/img/demo/miniature_loewy-1024-576.jpg')">
 						<div class="fpostVideo__content">
 							<h2 class="fpostVideo__title">L'homme qui créa la bouteille de Coca-Cola</h2>
 							<div class="fpostVideo__play">
