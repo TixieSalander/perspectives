@@ -1,0 +1,9 @@
+{
+    "name": "theotix/perspectives",
+    "require": {
+        "cosenary/instagram": "^2.3"
+    },
+	"autoload": {
+		"psr-4": {"App\\": "App/"}
+	}
+}

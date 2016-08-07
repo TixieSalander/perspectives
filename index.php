@@ -1,8 +1,8 @@
 <?php get_header() ?>
 
 <?php
-$path = str_replace('\\', '/', __DIR__ . '/inc/post_types_cards/PostTypesCardFactory.php');
-include_once __DIR__ . '/inc/post_types_cards/PostTypesCardFactory.php';
+include_once __DIR__ . '/vendor/autoload.php';
+use App\PostTypesCardFactory;
 $cardFactory = PostTypesCardFactory::getInstance();
 ?>
 
