@@ -24,3 +24,5 @@ nbproject
 .idea
 *.swp
 *~
+
+/vendor/

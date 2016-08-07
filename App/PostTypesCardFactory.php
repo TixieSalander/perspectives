@@ -1,5 +1,6 @@
 <?php
 
+namespace App;
 
 class PostTypesCardFactory
 {
@@ -15,7 +16,7 @@ class PostTypesCardFactory
 
 	private function __construct()
 	{
-		$this->types_icons = include __DIR__ . '/types_icon_reference.php';
+		$this->types_icons = include __DIR__ . '/post_types_cards/types_icon_reference.php';
 
 		$this->setBase('standart', $this->fetchBaseContent('standart'));
 		$this->setBase('dossier', $this->fetchBaseContent('dossier'));
@@ -39,7 +40,7 @@ class PostTypesCardFactory
 		if (!is_string($base_suffix))
 			return '';
 
-		return include __DIR__ . '/' . $this->base_filename_preffix . $base_suffix . '.php';
+		return include __DIR__ . '/post_types_cards/' . $this->base_filename_preffix . $base_suffix . '.php';
 	}
 
 
