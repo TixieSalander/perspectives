@@ -12,7 +12,7 @@ $cardFactory = PostTypesCardFactory::getInstance();
 
 			<?php
 
-			$current_page = intval(get_query_var('page'));
+			$current_page = intval(get_query_var('page', 1));
 
 			query_posts([
 				'posts_per_page' => '15',
