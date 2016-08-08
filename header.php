@@ -1,3 +1,8 @@
+<?php
+
+include_once __DIR__ . '/vendor/autoload.php';
+
+?>
 <!doctype html>
 <html>
 <head <?= language_attributes() ?> >
