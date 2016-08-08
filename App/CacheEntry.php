@@ -55,19 +55,10 @@ class CacheEntry
 	}
 
 
-	public function destroy()
-	{
-		unlink($this->file_path);
-		$this->destroy();
-	}
-
-
 	public function isValid(DateInterval $interval)
 	{
 		$expire_date = clone $this->date;
 		$expire_date->add($interval);
-
-		var_dump($expire_date->diff(new DateTime())->i . '-' . $expire_date->diff(new DateTime())->s);
 
 		return $expire_date->diff(new DateTime())->invert === 1;
 	}
