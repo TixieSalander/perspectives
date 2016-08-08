@@ -2,8 +2,14 @@
 
 <?php
 include_once __DIR__ . '/vendor/autoload.php';
+
 use App\PostTypesCardFactory;
+use App\Cache;
+
 $cardFactory = PostTypesCardFactory::getInstance();
+
+$cache = Cache::getInstance();
+
 ?>
 
 	<!-- Home timeline -->
