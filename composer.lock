@@ -4,51 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8fb31a4152009be74800659d024b62f7",
-    "content-hash": "e8af73428ecfcfbd349403634df0575e",
+    "hash": "a74cfd0c05175573dd7e906927fad994",
+    "content-hash": "d5cea821a5691e93fc5f378db44127f6",
     "packages": [
         {
-            "name": "cosenary/instagram",
-            "version": "v2.3",
+            "name": "bolandish/instagram-grabber",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cosenary/Instagram-PHP-API.git",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5"
+                "url": "https://github.com/Bolandish/Instagram-Grabber.git",
+                "reference": "2449912ced0606e2a6180f9acc18205acddd23e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cosenary/Instagram-PHP-API/zipball/fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
+                "url": "https://api.github.com/repos/Bolandish/Instagram-Grabber/zipball/2449912ced0606e2a6180f9acc18205acddd23e9",
+                "reference": "2449912ced0606e2a6180f9acc18205acddd23e9",
                 "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.2.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "MetzWeb\\Instagram\\": "src"
+                    "Bolandish\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
             "authors": [
                 {
-                    "name": "Christian Metz",
-                    "email": "christian-metz1@gmx.net",
-                    "homepage": "http://metzweb.net"
+                    "name": "Thomas Bolander",
+                    "email": "privat@thomasbolander.dk"
                 }
             ],
-            "description": "An easy-to-use PHP Class for accessing Instagram's API.",
-            "homepage": "https://github.com/cosenary/Instagram-PHP-API",
-            "keywords": [
-                "api",
-                "instagram"
-            ],
-            "time": "2014-11-29 13:10:42"
+            "description": "A workaround for the new Instagram policy to get images by hashtag and user id. No need for accesstoken",
+            "time": "2016-06-14 08:37:10"
         }
     ],
     "packages-dev": [],

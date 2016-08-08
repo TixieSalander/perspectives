@@ -1,14 +1,10 @@
-<?php get_header() ?>
-
 <?php
-include_once __DIR__ . '/vendor/autoload.php';
+
+get_header();
 
 use App\PostTypesCardFactory;
-use App\Cache;
 
 $cardFactory = PostTypesCardFactory::getInstance();
-
-$cache = Cache::getInstance();
 
 ?>
 
