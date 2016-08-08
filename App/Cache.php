@@ -63,7 +63,7 @@ class Cache implements CacheInterface
 		if ($entry === null)
 			return null;
 
-		if ($entry->isValid(new DateInterval('PT' . $sec_interval . 'S')))
+		if ($this->isEntryValid($entry, $sec_interval))
 			return $entry->getValue();
 
 		return null;
@@ -77,6 +77,25 @@ class Cache implements CacheInterface
 			return $this->cache_entries[ $name ];
 
 		return null;
+	}
+
+
+	public function isEntryValid(CacheEntry $entry, $sec_interval = 3600)
+	{
+		switch ($this->cache_config->mode) {
+			case 'production' :
+				return $entry->isValid(new DateInterval('PT' . $sec_interval . 'S'));
+				break;
+			case 'all_expire' :
+				return false;
+				break;
+			case 'no_expire':
+				return true;
+				break;
+			default:
+				return $entry->isValid(new DateInterval('PT' . $sec_interval . 'S'));
+		}
+
 	}
 
 
