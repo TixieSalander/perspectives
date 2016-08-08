@@ -6,8 +6,8 @@
 node_modules/
 
 style.css
-img/
-js/
+/img/
+/js/
 
 # OS
 .DS_Store
