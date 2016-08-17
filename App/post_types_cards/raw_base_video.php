@@ -1,6 +1,7 @@
 <?php
 
 return '<a class="{{the_class_size}} fpostVideo"
+			   href="{{the_permalink}}"
 			   style="background-image: url({{the_thumbnail}})">
 				<div class="fpostVideo__content">
 					<h2 class="fpostVideo__title">{{the_title}}</h2>
