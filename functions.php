@@ -38,7 +38,7 @@ function new_post_types()
 			'menu_position'     => 5,
 			'show_in_admin_bar' => true,
 			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'tag',],
+			'taxonomies'        => ['category', 'post_tag',],
 			'supports'          => array(
 				'title',
 				'editor',
@@ -78,7 +78,7 @@ function new_post_types()
 			'menu_position'     => 5,
 			'show_in_admin_bar' => true,
 			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'tag'],
+			'taxonomies'        => ['category', 'post_tag'],
 			'supports'          => array(
 				'title',
 				'editor',
@@ -118,7 +118,7 @@ function new_post_types()
 			'menu_position'     => 5,
 			'show_in_admin_bar' => true,
 			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'tag'],
+			'taxonomies'        => ['category', 'post_tag'],
 			'supports'          => array(
 				'title',
 				'editor',
