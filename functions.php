@@ -143,9 +143,9 @@ add_action('init', 'new_post_types');
 function medias_filter($content)
 {
 
-	// gestion des tailles forcées
-	// (style="[^"]*)width:[ 0-9a-z]*;?[[:space:]]*([^"]*")
-//	$content = preg_replace('/(\[caption[^]]*width=")[0-9]*("[^]]*])/i', '$1 100 $2', $content);
+	// gestion des boutons "call to action"
+	// <a href="http://eliepse.fr">Call to action</a>
+	$content = preg_replace('/^(<p[^>]*><a[^>]*)(>[^>]*<\/a><\/p>)$/mi', '$1 class="callToActionContent"$2', $content);
 
 	// gestion des iframe
 	$content = preg_replace('/(<iframe.*<\/iframe>)/i', '<span class="embed-youtube" style="text-align:center; display: block;">$1</span>', $content);
