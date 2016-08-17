@@ -1,6 +1,7 @@
 <?php
 
 use App\Cache;
+use App\Utils;
 use Bolandish\Instagram;
 
 $cache = Cache::getInstance();
@@ -68,15 +69,9 @@ if (empty($data)) {
 								<img src="<?= bloginfo("template_directory") ?>/img/ico-rss.svg" alt="RSS"/>
 							</a>
 						</li>
-						<li>
-							<a href="" title="">À propos</a>
-						</li>
-						<li>
-							<a href="" title="">Contact</a>
-						</li>
-						<li>
-							<a href="" title="">Mentions Légales</a>
-						</li>
+
+						<?= Utils::getWPMenu('footer-menu', false); ?>
+						
 					</ul>
 				</div>
 			</div>
