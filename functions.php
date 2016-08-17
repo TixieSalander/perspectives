@@ -1,7 +1,16 @@
 <?php
 
-// Add the support of thumbnails
-add_theme_support('post-thumbnails');
+function register_menus()
+{
+	register_nav_menus(
+		[
+			'top-bar-menu' => 'Top-bar',
+			'main-menu'  => 'Général',
+			'footer-menu'  => 'Footer',
+			'rs-menu'  => 'Réseaux Sociaux',
+		]
+	);
+}
 
 function add_post_formats()
 {
@@ -10,8 +19,6 @@ function add_post_formats()
 		'aside', 'video', 'audio',
 	));
 }
-
-add_action('after_setup_theme', 'add_post_formats', 20);
 
 function new_post_types()
 {
@@ -138,8 +145,6 @@ function new_post_types()
 
 }
 
-add_action('init', 'new_post_types');
-
 function medias_filter($content)
 {
 
@@ -179,7 +184,14 @@ function my_img_caption_shortcode($empty, $attr, $content)
 
 }
 
+
+add_action('after_setup_theme', 'add_post_formats', 20);
+add_action('init', 'new_post_types');
+add_action('init', 'register_menus');
+
+// Add the support of thumbnails
+add_theme_support('post-thumbnails');
+
 add_filter('the_content', 'medias_filter');
 add_filter('img_caption_shortcode', 'my_img_caption_shortcode', 10, 3);
-
 
