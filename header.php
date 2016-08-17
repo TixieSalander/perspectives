@@ -30,9 +30,9 @@ include_once __DIR__ . '/vendor/autoload.php';
 <!-- Top bar -->
 <div class="topbar">
 	<div class="container">
+
 		<nav class="topNav">
-			<a class="topNav__item">Archives</a>
-			<a class="topNav__item">À propos</a>
+			<?= Utils::getWPMenu('top-bar-menu', false, false, 'topNav__item'); ?>
 		</nav>
 		<ul class="topSocial">
 			<li class="topSocial__item">
@@ -70,7 +70,7 @@ include_once __DIR__ . '/vendor/autoload.php';
 <!-- Main header -->
 <header class="header">
 	<div class="container">
-		
+
 		<a class="header__logo" href="<?= bloginfo('url') ?>" title="Accueil">
 			<img src="<?= header_image() ?>" alt="Perspectives"/>
 		</a>
@@ -106,31 +106,11 @@ include_once __DIR__ . '/vendor/autoload.php';
 				<img src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
 			</button>
 		</form>
-		<ul class="mobileCat">
-			<li>
-				<a class="mobileCat__link" href="">Création</a>
-			</li>
-			<li>
-				<a class="mobileCat__link" href="">Ressource</a>
-			</li>
-			<li>
-				<a class="mobileCat__link" href="">Évènement</a>
-			</li>
-			<li>
-				<a class="mobileCat__link" href="">Chronique</a>
-			</li>
-			<li>
-				<a class="mobileCat__link" href="">Dossier</a>
-			</li>
-		</ul>
-		<ul class="mobileNav">
-			<li class="mobileNav__item">
-				<a class="mobileNav__link" href="">Archives</a>
-			</li>
-			<li class="mobileNav__item">
-				<a class="mobileNav__link" href="">À propos</a>
-			</li>
-		</ul>
+
+		<?= Utils::getWPMenu('main-menu', 'mobileCat', '', 'mobileCat__link'); ?>
+		
+		<?= Utils::getWPMenu('top-bar-menu', 'mobileNav', 'mobileNav__item', 'mobileNav__link'); ?>
+
 	</div>
 	<div class="mobileMenu__footer mobileSocial">
 		<a class="mobileSocial__item" href="" title="Profil Twitter">
