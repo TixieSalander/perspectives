@@ -57,7 +57,7 @@ class PostTypesCardFactory
 	public function printHomeModule($leftSize = 2, $rightSize = 1)
 	{
 
-		if(!$this->have_post) {
+		if (!$this->have_post) {
 			return null;
 		}
 
@@ -101,17 +101,31 @@ class PostTypesCardFactory
 	}
 
 
-	public function getCard($base_suffix = null, $values = [])
+	public function getCard($base_suffix = null, $values = [], $context = null)
 	{
 
+		if (is_null($context)) {
 
-		if (!$this->have_post || !have_posts()) {
-			$this->have_post = false;
+			if (!$this->have_post || !have_posts()) {
+				$this->have_post = false;
 
-			return null;
+				return null;
+			}
+
+			the_post();
+
+		} else {
+
+			if (!$this->have_post || !$context->have_posts()) {
+				$this->have_post = false;
+
+				return null;
+			}
+
+			$context->the_post();
+
 		}
 
-		the_post();
 
 		$values = array_merge([
 			'title'       => get_the_title(),
@@ -186,22 +200,12 @@ class PostTypesCardFactory
 	}
 
 
-	private function getCardList($matrix = [])
-	{
-		$list = [];
-		foreach ($matrix as $size) {
-			$list[] = $this->getCard(null, [
-				'class_size' => $this->getModuleClass($size),
-			]);
-		}
-
-		return $list;
-	}
-
-
 	private function getModuleClass($cardSize)
 	{
 		switch ($cardSize) {
+			case 'suggestion':
+				return 'single-suggestion__item';
+				break;
 			case 4:
 				return 'home-moduleBig';
 				break;
@@ -221,6 +225,19 @@ class PostTypesCardFactory
 	}
 
 
+	private function getCardList($matrix = [], $context = null)
+	{
+		$list = [];
+		foreach ($matrix as $size) {
+			$list[] = $this->getCard(null, [
+				'class_size' => $this->getModuleClass($size),
+			], $context);
+		}
+
+		return $list;
+	}
+
+
 	private function getSideModule()
 	{
 		$content = "";
@@ -229,6 +246,58 @@ class PostTypesCardFactory
 		$content .= "</div>";
 
 		return $content;
+	}
+
+
+	public function getRelated()
+	{
+		global $post;
+
+		$html = '';
+
+		$tags = wp_get_post_tags($post->ID);
+
+		if ($tags) {
+
+			$tag_ids = array();
+
+			foreach ($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+
+			$args = array(
+				'tag__in'          => $tag_ids,
+				'post__not_in'     => array($post->ID),
+				'showposts'        => 3, // nombre d'articles à afficher
+				'caller_get_posts' => 1,
+				'post_type'        => ['post', 'chronique', 'evenement', 'dossier'],
+			);
+
+			$my_query = new \wp_query($args);
+
+			if(!$my_query->have_posts()) {
+
+				$my_query = new \wp_query([
+					'post__not_in'     => array($post->ID),
+					'showposts'        => 3,
+					'post_type'        => ['post', 'chronique', 'evenement', 'dossier'],
+				]);
+
+			}
+
+			$html .= '<div class="single-suggestion">';
+			$html .= '	<h3 class="single-suggestion__title">Ces articles peuvent aussi vous intéresser</h3>';
+			$html .= '	<div class="single-suggestion__list grid-3 grid-2-m grid-1-s">';
+
+			$html .= implode('', $this->getCardList(['suggestion', 'suggestion', 'suggestion',], $my_query));
+
+			$html .= '	</div>';
+			$html .= '</div>';
+
+			wp_reset_postdata();
+
+		}
+
+		return $html;
+
 	}
 
 }
