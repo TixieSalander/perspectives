@@ -1,5 +1,7 @@
 <?php
 
+use App\Utils;
+
 include_once __DIR__ . '/vendor/autoload.php';
 
 ?>
@@ -71,25 +73,9 @@ include_once __DIR__ . '/vendor/autoload.php';
 		<a class="header__logo" href="" title="Accueil">
 			<img src="<?= bloginfo("template_directory") ?>/img/logo-main.svg" alt="Perspectives"/>
 		</a>
-		<nav class="catNav">
-			<ul>
-				<li class="catNav__item">
-					<a class="catNav__link" href="" title="">Création</a>
-				</li>
-				<li class="catNav__item">
-					<a class="catNav__link" href="" title="">Ressource</a>
-				</li>
-				<li class="catNav__item">
-					<a class="catNav__link" href="" title="">Évènement</a>
-				</li>
-				<li class="catNav__item">
-					<a class="catNav__link" href="" title="">Chronique</a>
-				</li>
-				<li class="catNav__item">
-					<a class="catNav__link" href="" title="">Dossier</a>
-				</li>
-			</ul>
-		</nav>
+
+		<?= Utils::getWPMenu('main-menu', 'catNav', 'catNav__item', 'catNav__link'); ?>
+
 	</div>
 </header>
 
