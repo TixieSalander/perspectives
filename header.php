@@ -70,8 +70,9 @@ include_once __DIR__ . '/vendor/autoload.php';
 <!-- Main header -->
 <header class="header">
 	<div class="container">
-		<a class="header__logo" href="" title="Accueil">
-			<img src="<?= bloginfo("template_directory") ?>/img/logo-main.svg" alt="Perspectives"/>
+		
+		<a class="header__logo" href="<?= bloginfo('url') ?>" title="Accueil">
+			<img src="<?= header_image() ?>" alt="Perspectives"/>
 		</a>
 
 		<?= Utils::getWPMenu('main-menu', 'catNav', 'catNav__item', 'catNav__link'); ?>

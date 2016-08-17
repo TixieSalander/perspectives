@@ -5,11 +5,19 @@ function register_menus()
 	register_nav_menus(
 		[
 			'top-bar-menu' => 'Top-bar',
-			'main-menu'  => 'Général',
+			'main-menu'    => 'Général',
 			'footer-menu'  => 'Footer',
-			'rs-menu'  => 'Réseaux Sociaux',
+			'rs-menu'      => 'Réseaux Sociaux',
 		]
 	);
+}
+
+/* Autoriser les fichiers SVG */
+function wpc_mime_types($mimes)
+{
+	$mimes['svg'] = 'image/svg+xml';
+	
+	return $mimes;
 }
 
 function add_post_formats()
@@ -22,7 +30,7 @@ function add_post_formats()
 
 function new_post_types()
 {
-
+	
 	// On crée le type Dossier
 	register_post_type(
 		'dossier',
@@ -62,7 +70,7 @@ function new_post_types()
 			'has_archive'       => true,
 		)
 	);
-
+	
 	// On crée le type Chronique
 	register_post_type(
 		'chronique',
@@ -102,7 +110,7 @@ function new_post_types()
 			'has_archive'       => true,
 		)
 	);
-
+	
 	// On crée le type Chronique
 	register_post_type(
 		'evenement',
@@ -142,19 +150,19 @@ function new_post_types()
 			'has_archive'       => true,
 		)
 	);
-
+	
 }
 
 function medias_filter($content)
 {
-
+	
 	// gestion des boutons "call to action"
 	// <a href="http://eliepse.fr">Call to action</a>
 	$content = preg_replace('/^(<p[^>]*><a[^>]*)(>[^>]*<\/a><\/p>)$/mi', '$1 class="callToActionContent"$2', $content);
-
+	
 	// gestion des iframe
 	$content = preg_replace('/(<iframe.*<\/iframe>)/i', '<span class="embed-youtube" style="text-align:center; display: block;">$1</span>', $content);
-
+	
 	return $content;
 }
 
@@ -166,22 +174,22 @@ function my_img_caption_shortcode($empty, $attr, $content)
 		'width'   => '',
 		'caption' => '',
 	), $attr);
-
+	
 	if (1 > (int)$attr['width'] || empty($attr['caption'])) {
 		return '';
 	}
-
+	
 	if ($attr['id']) {
 		$attr['id'] = 'id="' . esc_attr($attr['id']) . '" ';
 	}
-
+	
 	return '<div ' . $attr['id']
 	. 'class="wp-caption ' . esc_attr($attr['align']) . '" '
 	. 'style="max-width: ' . (10 + (int)$attr['width']) . 'px;">'
 	. do_shortcode($content)
 	. '<p class="wp-caption-text">' . $attr['caption'] . '</p>'
 	. '</div>';
-
+	
 }
 
 
@@ -190,8 +198,10 @@ add_action('init', 'new_post_types');
 add_action('init', 'register_menus');
 
 // Add the support of thumbnails
+add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
 
 add_filter('the_content', 'medias_filter');
 add_filter('img_caption_shortcode', 'my_img_caption_shortcode', 10, 3);
+add_filter('upload_mimes', 'wpc_mime_types');
 
