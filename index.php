@@ -18,7 +18,6 @@ $cardFactory = PostTypesCardFactory::getInstance();
 
 			query_posts([
 				'posts_per_page' => '15',
-				'post_type'      => ['post', 'chronique', 'evenement', 'dossier'],
 				'paged'          => $current_page,
 			]);
 			?>
@@ -41,49 +40,52 @@ $cardFactory = PostTypesCardFactory::getInstance();
 				$max_page = intval($wp_query->max_num_pages);
 				$mid_size = 2;
 
-				?>
-
-
-				<ul class="pagination__list">
-
-					<?php
-
-					function printHtmlNumber($text, $page, $class = '')
-					{
-						echo "<li class=\"pagination__item\">
-							<a class=\"pagination__itemContent $class\" href=\"?page=$page\">$text</a>
-						</li>";
-					}
-
-					function printDesactivated() {
-						echo '<li class="pagination__item">
-								<span class="pagination__itemContent pagination__itemContent--desactivated">…</span>
-							</li>';
-					}
-
-					if ($current_page > 1)
-						printHtmlNumber("«", $current_page - 1);
-
-					printHtmlNumber("1", 1, $current_page === 1 ? 'pagination__itemContent--current' : '');
-
-					if($current_page - $mid_size > 1)
-						printDesactivated();
-
-					for($i = $current_page - $mid_size + 1; $i > 1 && $i < $current_page + $mid_size && $current_page < $max_page; $i++)
-						printHtmlNumber($i, $i, $current_page === $i ? 'pagination__itemContent--current' : '');
-
-					if($current_page + $mid_size < $max_page)
-						printDesactivated();
-
-					printHtmlNumber($max_page, $max_page, $max_page === $current_page ? 'pagination__itemContent--current' : '');
-
-					if ($current_page < $max_page)
-						printHtmlNumber("»", $current_page + 1);
+				if ($max_page > 1) :
 
 					?>
 
-				</ul>
 
+					<ul class="pagination__list">
+
+						<?php
+
+						function printHtmlNumber($text, $page, $class = '')
+						{
+							echo "<li class=\"pagination__item\">
+							<a class=\"pagination__itemContent $class\" href=\"?page=$page\">$text</a>
+						</li>";
+						}
+
+						function printDesactivated()
+						{
+							echo '<li class="pagination__item">
+								<span class="pagination__itemContent pagination__itemContent--desactivated">…</span>
+							</li>';
+						}
+
+						if ($current_page > 1)
+							printHtmlNumber("«", $current_page - 1);
+
+						printHtmlNumber("1", 1, $current_page === 1 ? 'pagination__itemContent--current' : '');
+
+						if ($current_page - $mid_size > 1)
+							printDesactivated();
+
+						for ($i = $current_page - $mid_size + 1; $i > 1 && $i < $current_page + $mid_size && $current_page < $max_page; $i++)
+							printHtmlNumber($i, $i, $current_page === $i ? 'pagination__itemContent--current' : '');
+
+						if ($current_page + $mid_size < $max_page)
+							printDesactivated();
+
+						printHtmlNumber($max_page, $max_page, $max_page === $current_page ? 'pagination__itemContent--current' : '');
+
+						if ($current_page < $max_page)
+							printHtmlNumber("»", $current_page + 1);
+
+						?>
+
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
