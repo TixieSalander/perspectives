@@ -192,16 +192,55 @@ function my_img_caption_shortcode($empty, $attr, $content)
 	
 }
 
+function add_settings()
+{
+	add_settings_section('rs_settings', 'Réseaux Sociaux', function(){
+		echo "Ici c'est pour les liens vers les comptes des réseaux sociaux";
+	}, 'general');
+
+	add_settings_field('rs_twitter', 'Lien vers Twitter', function(){
+		echo '<input name="rs_twitter" type="text" value="'. get_option('rs_twitter', '') .'" placeholder="Laisser vide pour désactiver" />';
+	}, 'general', 'rs_settings');
+
+	add_settings_field('rs_youtube', 'Lien vers Youtube', function(){
+		echo '<input name="rs_youtube" type="text" value="'. get_option('rs_youtube', '') .'" placeholder="Laisser vide pour désactiver" />';
+	}, 'general', 'rs_settings');
+
+	add_settings_field('rs_instagram', 'Lien vers Instagram', function(){
+		echo '<input name="rs_instagram" type="text" value="'. get_option('rs_instagram', '') .'" placeholder="Laisser vide pour désactiver" />';
+	}, 'general', 'rs_settings');
+
+	add_settings_field('rs_facebook', 'Lien vers Facebook', function(){
+		echo '<input name="rs_facebook" type="text" value="'. get_option('rs_facebook', '') .'" placeholder="Laisser vide pour désactiver" />';
+	}, 'general', 'rs_settings');
+
+	add_settings_field('rs_rss', 'Lien Rss', function(){
+		echo '<input name="rs_rss" type="checkbox" value="'. get_option('rs_rss', 1) .'" '. (get_option('rs_rss', false) ? 'checked' : '') .' />';
+	}, 'general', 'rs_settings');
+
+	register_setting('general', 'rs_twitter');
+	register_setting('general', 'rs_youtube');
+	register_setting('general', 'rs_instagram');
+	register_setting('general', 'rs_facebook');
+	register_setting('general', 'rs_rss');
+
+}
+
+function add_pages() {
+//	add_options_page( 'Réseaux Sociaux', 'Réseaux', 'manage_options', 'options-rs.php');
+}
+
+
 
 add_action('after_setup_theme', 'add_post_formats', 20);
 add_action('init', 'new_post_types');
 add_action('init', 'register_menus');
+add_action('admin_menu', 'add_pages');
+add_action('admin_init', 'add_settings');
 
-// Add the support of thumbnails
 add_theme_support('custom-header');
 add_theme_support('post-thumbnails');
 
 add_filter('the_content', 'medias_filter');
 add_filter('img_caption_shortcode', 'my_img_caption_shortcode', 10, 3);
 add_filter('upload_mimes', 'wpc_mime_types');
-
