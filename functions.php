@@ -9,7 +9,6 @@ function register_menus()
 			'top-bar-menu' => 'Top-bar',
 			'main-menu'    => 'Général',
 			'footer-menu'  => 'Footer',
-			'rs-menu'      => 'Réseaux Sociaux',
 		]
 	);
 }
