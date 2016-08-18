@@ -14,7 +14,7 @@ return '<a class="{{the_class_size}} fpostVideo"
 					</div>
 					<div class="fpostVideo__cat">
 						{{the_type_icon}}
-						{{the_type_name}}
+						{{the_categories}}
 					</div>
 				</div>
 			</a>';
