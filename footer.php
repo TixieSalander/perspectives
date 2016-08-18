@@ -55,7 +55,7 @@ if (empty($data)) {
 							Restez en contact<br/>
 
 							<?= Utils::getSocials([], false, false, 'footerSocial__item'); ?>
-							
+
 						</li>
 
 						<?= Utils::getWPMenu('footer-menu', false); ?>
