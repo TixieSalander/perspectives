@@ -21,7 +21,7 @@ class Cache implements CacheInterface
 	 */
 	private function __construct()
 	{
-		$this->cache_config = new Config('cache');
+		$this->cache_config = ConfigFactory::getConfig('cache');
 
 		$this->cache_path = $this->base_path . $this->cache_config->cache_folder;
 

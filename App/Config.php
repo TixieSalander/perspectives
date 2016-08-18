@@ -9,6 +9,7 @@ class Config
 
 	protected $name = '';
 	protected $configs = [];
+	static protected $_instance;
 
 
 	/**
