@@ -53,21 +53,9 @@ if (empty($data)) {
 					<ul>
 						<li class="footerSocial">
 							Restez en contact<br/>
-							<a class="footerSocial__item" href="" title="Profil Twitter">
-								<img src="<?= bloginfo("template_directory") ?>/img/ico-twitter.svg" alt="Twitter"/>
-							</a>
-							<a class="footerSocial__item" href="" title="Chaine Youtube">
-								<img src="<?= bloginfo("template_directory") ?>/img/ico-youtube.svg" alt="Youtube"/>
-							</a>
-							<a class="footerSocial__item" href="" title="Profil Instagram">
-								<img src="<?= bloginfo("template_directory") ?>/img/ico-instagram.svg" alt="Instagram"/>
-							</a>
-							<a class="footerSocial__item" href="" title="Page Facebook">
-								<img src="<?= bloginfo("template_directory") ?>/img/ico-facebook.svg" alt="Facebook"/>
-							</a>
-							<a class="footerSocial__item" href="" title="Flux RSS">
-								<img src="<?= bloginfo("template_directory") ?>/img/ico-rss.svg" alt="RSS"/>
-							</a>
+
+							<?= Utils::getSocials([], false, false, 'footerSocial__item'); ?>
+							
 						</li>
 
 						<?= Utils::getWPMenu('footer-menu', false); ?>

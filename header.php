@@ -34,38 +34,15 @@ include_once __DIR__ . '/vendor/autoload.php';
 		<nav class="topNav">
 			<?= Utils::getWPMenu('top-bar-menu', false, false, 'topNav__item'); ?>
 		</nav>
-		<ul class="topSocial">
-			<li class="topSocial__item">
-				<a href="" title="Profil Twitter">
-					<img src="<?= bloginfo("template_directory") ?>/img/ico-twitter.svg" alt="Twitter"/>
-				</a>
-			</li>
-			<li class="topSocial__item">
-				<a href="" title="Chaine Youtube">
-					<img src="<?= bloginfo("template_directory") ?>/img/ico-youtube.svg" alt="Youtube"/>
-				</a>
-			</li>
-			<li class="topSocial__item">
-				<a href="" title="Profil Instagram">
-					<img src="<?= bloginfo("template_directory") ?>/img/ico-instagram.svg" alt="Instagram"/>
-				</a>
-			</li>
-			<li class="topSocial__item">
-				<a href="" title="Page Facebook">
-					<img src="<?= bloginfo("template_directory") ?>/img/ico-facebook.svg" alt="Facebook"/>
-				</a>
-			</li>
-			<li class="topSocial__item">
-				<a href="" title="Flux RSS">
-					<img src="<?= bloginfo("template_directory") ?>/img/ico-rss.svg" alt="RSS"/>
-				</a>
-			</li>
-		</ul>
+
+		<?= Utils::getSocials([], 'topSocial', 'topSocial__item'); ?>
+
 		<button class="topSearch" data-js="topSearchButton"><img class="topSearch__icon"
 		                                                         src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
 		</button>
 	</div>
 </div>
+
 
 <!-- Main header -->
 <header class="header">
@@ -74,6 +51,7 @@ include_once __DIR__ . '/vendor/autoload.php';
 		<a class="header__logo" href="<?= bloginfo('url') ?>" title="Accueil">
 			<img src="<?= header_image() ?>" alt="Perspectives"/>
 		</a>
+
 
 		<?= Utils::getWPMenu('main-menu', 'catNav', 'catNav__item', 'catNav__link'); ?>
 
@@ -108,27 +86,13 @@ include_once __DIR__ . '/vendor/autoload.php';
 		</form>
 
 		<?= Utils::getWPMenu('main-menu', 'mobileCat', '', 'mobileCat__link'); ?>
-		
+
 		<?= Utils::getWPMenu('top-bar-menu', 'mobileNav', 'mobileNav__item', 'mobileNav__link'); ?>
 
 	</div>
 	<div class="mobileMenu__footer mobileSocial">
-		<a class="mobileSocial__item" href="" title="Profil Twitter">
-			<img src="<?= bloginfo("template_directory") ?>/img/ico-twitter.svg" alt="Twitter"/>
-		</a>
-		<a class="mobileSocial__item" href="" title="Chaine Youtube">
-			<img src="<?= bloginfo("template_directory") ?>/img/ico-youtube.svg" alt="Youtube"/>
-		</a>
-		<a class="mobileSocial__item" href="" title="Profil Instagram">
-			<img src="<?= bloginfo("template_directory") ?>/img/ico-instagram.svg" alt="Instagram"/>
-		</a>
-		<a class="mobileSocial__item" href="" title="Page Facebook">
-			<img src="<?= bloginfo("template_directory") ?>/img/ico-facebook.svg" alt="Facebook"/>
-		</a>
-		<a class="mobileSocial__item" href="" title="Flux RSS">
-			<img src="<?= bloginfo("template_directory") ?>/img/ico-rss.svg" alt="RSS"/>
-		</a>
-		</li>
-		</ul>
+
+		<?= Utils::getSocials([], false, false, 'mobileSocial__item'); ?>
+	
 	</div>
 </div>
