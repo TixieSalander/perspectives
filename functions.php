@@ -1,5 +1,7 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 function register_menus()
 {
 	register_nav_menus(
@@ -194,48 +196,41 @@ function my_img_caption_shortcode($empty, $attr, $content)
 
 function add_settings()
 {
-	add_settings_section('rs_settings', 'Réseaux Sociaux', function(){
+
+	$global_config = \App\ConfigFactory::getConfig('global');
+
+
+	add_settings_section('rs_settings', 'Réseaux Sociaux', function () {
 		echo "Ici c'est pour les liens vers les comptes des réseaux sociaux";
 	}, 'general');
 
-	add_settings_field('rs_twitter', 'Lien vers Twitter', function(){
-		echo '<input name="rs_twitter" type="text" value="'. get_option('rs_twitter', '') .'" placeholder="Laisser vide pour désactiver" />';
+
+	foreach ($global_config->socials_display as $key => $social) {
+
+		if($key === 'rss') continue;
+
+		$field_name = 'rs_' . $key;
+
+		add_settings_field($field_name, 'Lien vers ' . $social['img_alt'], function () use ($field_name) {
+			echo '<input name="'. $field_name .'" type="text" value="' . get_option($field_name, '') . '" placeholder="Laisser vide pour désactiver" />';
+		}, 'general', 'rs_settings');
+
+		register_setting('general', $field_name);
+
+	}
+
+	add_settings_field('rs_rss', 'Lien Rss', function () {
+		echo '<input name="rs_rss" type="checkbox" value="' . get_option('rs_rss', 1) . '" ' . (get_option('rs_rss', false) ? 'checked' : '') . ' />';
 	}, 'general', 'rs_settings');
 
-	add_settings_field('rs_youtube', 'Lien vers Youtube', function(){
-		echo '<input name="rs_youtube" type="text" value="'. get_option('rs_youtube', '') .'" placeholder="Laisser vide pour désactiver" />';
-	}, 'general', 'rs_settings');
-
-	add_settings_field('rs_instagram', 'Lien vers Instagram', function(){
-		echo '<input name="rs_instagram" type="text" value="'. get_option('rs_instagram', '') .'" placeholder="Laisser vide pour désactiver" />';
-	}, 'general', 'rs_settings');
-
-	add_settings_field('rs_facebook', 'Lien vers Facebook', function(){
-		echo '<input name="rs_facebook" type="text" value="'. get_option('rs_facebook', '') .'" placeholder="Laisser vide pour désactiver" />';
-	}, 'general', 'rs_settings');
-
-	add_settings_field('rs_rss', 'Lien Rss', function(){
-		echo '<input name="rs_rss" type="checkbox" value="'. get_option('rs_rss', 1) .'" '. (get_option('rs_rss', false) ? 'checked' : '') .' />';
-	}, 'general', 'rs_settings');
-
-	register_setting('general', 'rs_twitter');
-	register_setting('general', 'rs_youtube');
-	register_setting('general', 'rs_instagram');
-	register_setting('general', 'rs_facebook');
 	register_setting('general', 'rs_rss');
 
 }
-
-function add_pages() {
-//	add_options_page( 'Réseaux Sociaux', 'Réseaux', 'manage_options', 'options-rs.php');
-}
-
 
 
 add_action('after_setup_theme', 'add_post_formats', 20);
 add_action('init', 'new_post_types');
 add_action('init', 'register_menus');
-add_action('admin_menu', 'add_pages');
 add_action('admin_init', 'add_settings');
 
 add_theme_support('custom-header');
