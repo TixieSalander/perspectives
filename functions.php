@@ -29,129 +29,14 @@ function add_post_formats()
 	));
 }
 
-function new_post_types()
-{
-	
-	// On crée le type Dossier
-	register_post_type(
-		'dossier',
-		array(
-			'label'             => 'Dossiers',
-			'labels'            => array(
-				'name'               => 'Dossiers',
-				'singular_name'      => 'Dossier',
-				'all_items'          => 'Tous les dossiers',
-				'add_new_item'       => 'Ajouter un dossier',
-				'edit_item'          => 'Éditer le dossier',
-				'new_item'           => 'Nouveau dossier',
-				'view_item'          => 'Voir le dossier',
-				'search_items'       => 'Rechercher parmi les dossiers',
-				'not_found'          => 'Pas de dossier trouvé',
-				'not_found_in_trash' => 'Pas de dossier dans la corbeille',
-			),
-			'public'            => true,
-			'capability_type'   => 'post',
-			'menu_position'     => 5,
-			'show_in_admin_bar' => true,
-			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'post_tag',],
-			'supports'          => array(
-				'title',
-				'editor',
-				'author',
-				'thumbnail',
-				'excerpt',
-				'trackbacks',
-				'custom-fields',
-				'comments',
-				'revisions',
-				'page-attributes',
-				'post-formats',
-			),
-			'has_archive'       => true,
-		)
+function rename_post_formats($translation, $text, $context, $domain) {
+	$names = array(
+		'Aside' => 'Dossier'
 	);
-	
-	// On crée le type Chronique
-	register_post_type(
-		'chronique',
-		array(
-			'label'             => 'Chroniques',
-			'labels'            => array(
-				'name'               => 'Chroniques',
-				'singular_name'      => 'Chronique',
-				'all_items'          => 'Toutes les chroniques',
-				'add_new_item'       => 'Ajouter une chronique',
-				'edit_item'          => 'Éditer la chroniques',
-				'new_item'           => 'Nouvelle chronique',
-				'view_item'          => 'Voir la chronique',
-				'search_items'       => 'Rechercher parmi les chroniques',
-				'not_found'          => 'Pas de chronique trouvée',
-				'not_found_in_trash' => 'Pas de chronique dans la corbeille',
-			),
-			'public'            => true,
-			'capability_type'   => 'post',
-			'menu_position'     => 5,
-			'show_in_admin_bar' => true,
-			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'post_tag'],
-			'supports'          => array(
-				'title',
-				'editor',
-				'author',
-				'thumbnail',
-				'excerpt',
-				'trackbacks',
-				'custom-fields',
-				'comments',
-				'revisions',
-				'page-attributes',
-				'post-formats',
-			),
-			'has_archive'       => true,
-		)
-	);
-	
-	// On crée le type Chronique
-	register_post_type(
-		'evenement',
-		array(
-			'label'             => 'Évenements',
-			'labels'            => array(
-				'name'               => 'Évenements',
-				'singular_name'      => 'Évenement',
-				'all_items'          => 'Tous les évenements',
-				'add_new_item'       => 'Ajouter un évenement',
-				'edit_item'          => 'Éditer l\'évenement',
-				'new_item'           => 'Nouvel évenement',
-				'view_item'          => 'Voir l\'évenement',
-				'search_items'       => 'Rechercher parmi les évenements',
-				'not_found'          => 'Pas d\'évenement trouvée',
-				'not_found_in_trash' => 'Pas d\'évenement dans la corbeille',
-			),
-			'public'            => true,
-			'capability_type'   => 'post',
-			'menu_position'     => 5,
-			'show_in_admin_bar' => true,
-			'hierarchical'      => true,
-			'taxonomies'        => ['category', 'post_tag'],
-			'supports'          => array(
-				'title',
-				'editor',
-				'author',
-				'thumbnail',
-				'excerpt',
-				'trackbacks',
-				'custom-fields',
-				'comments',
-				'revisions',
-				'page-attributes',
-				'post-formats',
-			),
-			'has_archive'       => true,
-		)
-	);
-	
+	if ($context == 'Post format') {
+		$translation = str_replace(array_keys($names), array_values($names), $text);
+	}
+	return $translation;
 }
 
 function medias_filter($content)
@@ -228,7 +113,6 @@ function add_settings()
 
 
 add_action('after_setup_theme', 'add_post_formats', 20);
-add_action('init', 'new_post_types');
 add_action('init', 'register_menus');
 add_action('admin_init', 'add_settings');
 
@@ -238,3 +122,4 @@ add_theme_support('post-thumbnails');
 add_filter('the_content', 'medias_filter');
 add_filter('img_caption_shortcode', 'my_img_caption_shortcode', 10, 3);
 add_filter('upload_mimes', 'wpc_mime_types');
+add_filter('gettext_with_context', 'rename_post_formats', 10, 4);

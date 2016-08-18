@@ -7,16 +7,17 @@ class PostTypesCardFactory
 
 	private static $_instance;
 	private $base_filename_preffix = 'raw_base_';
-	private $base_standart;
-	private $base_dossier;
-	private $base_video;
-	private $types_icons;
+	private $svg_icon;
 	private $have_post = true;
 
 
 	private function __construct()
 	{
-		$this->types_icons = include __DIR__ . '/post_types_cards/types_icon_reference.php';
+		$this->svg_icon = '<svg width="10px" height="11px" viewBox="0 5 10 11" version="1.1" xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink">
+				<path stroke="none" fill="#FFFFFF" fill-rule="evenodd"
+				d="M1.43333333,5.83291667 L1.25041667,5 L8.74791667,5 L8.565,5.83291667 L1.43333333,5.83291667 L1.43333333,5.83291667 Z M0,8.33333333 L0.847916667,15 L9.12625,15 L10,8.33333333 L0,8.33333333 L0,8.33333333 Z M9.27291667,7.5 L9.4275,6.66666667 L0.570833333,6.66666667 L0.725416667,7.5 L9.27291667,7.5 L9.27291667,7.5 Z"></path>
+				</svg>';
 
 		$this->setBase('standart', $this->fetchBaseContent('standart'));
 		$this->setBase('dossier', $this->fetchBaseContent('dossier'));
@@ -126,45 +127,36 @@ class PostTypesCardFactory
 
 		}
 
+		$categories = [];
+
+		foreach (get_the_category() as $cat) {
+			$categories[] = $cat->cat_name;
+		}
 
 		$values = array_merge([
 			'title'       => get_the_title(),
 			'permalink'   => get_the_permalink(),
 			'thumbnail'   => get_the_post_thumbnail_url(),
-			'type_name'   => get_post_type(),
 			'format_name' => get_post_format(),
+			'categories'  => $categories,
 			'excerpt'     => get_the_excerpt(),
 		], $values);
 
-		$type = 'standart';
+		$values['type_icon'] = count($values['categories']) === 0 ? '' : $this->svg_icon;
 
-		if (array_key_exists($values['type_name'], $this->types_icons)) {
-			$values['type_icon'] = $this->types_icons[ $values['type_name'] ][0];
-			$values['type_name'] = $this->types_icons[ $values['type_name'] ][1];
-			$type = $values['type_name'];
+		$values['categories'] = implode(', ', $values['categories']);
 
-		} else if (!empty($values['format_name'])) {
-			$type = $values['format_name'];
-			$values['type_icon'] = '';
-			$values['type_name'] = '';
+		$format = 'standart';
 
-		} else {
-			$values['type_icon'] = '';
-			$values['type_name'] = '';
-
+		if (!empty($values['format_name'])) {
+			$format = $values['format_name'];
 		}
 
 
 		if (empty($base_suffix))
-			switch (strtolower($type)) {
-				case 'dossier':
+			switch (strtolower($format)) {
+				case 'aside':
 					$base_suffix = 'dossier';
-					break;
-				case 'chronique':
-					$base_suffix = 'standart';
-					break;
-				case 'evenement':
-					$base_suffix = 'standart';
 					break;
 				case 'video':
 					$base_suffix = 'video';
@@ -269,16 +261,17 @@ class PostTypesCardFactory
 				'showposts'        => 3, // nombre d'articles à afficher
 				'caller_get_posts' => 1,
 				'post_type'        => ['post', 'chronique', 'evenement', 'dossier'],
+				p,
 			);
 
 			$my_query = new \wp_query($args);
 
-			if(!$my_query->have_posts()) {
+			if (!$my_query->have_posts()) {
 
 				$my_query = new \wp_query([
-					'post__not_in'     => array($post->ID),
-					'showposts'        => 3,
-					'post_type'        => ['post', 'chronique', 'evenement', 'dossier'],
+					'post__not_in' => array($post->ID),
+					'showposts'    => 3,
+					'post_type'    => ['post', 'chronique', 'evenement', 'dossier'],
 				]);
 
 			}

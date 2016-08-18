@@ -6,6 +6,6 @@ return '<a class="{{the_class_size}} fpostDossier"
 			<p class="fpostDossier__extract">{{the_excerpt}}</p>
 			<div class="fpostDossier__cat">
 				{{the_type_icon}}
-				{{the_type_name}}
+				{{the_categories}}
 			</div>
 		</a>';

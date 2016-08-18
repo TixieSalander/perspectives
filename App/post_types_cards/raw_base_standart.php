@@ -7,7 +7,7 @@ return '<a class="{{the_class_size}} fpostArticle"
 				<h2 class="fpostArticle__title">{{the_title}}</h2>
 				<div class="fpostArticle__cat">
 					{{the_type_icon}}
-					{{the_type_name}}
+					{{the_categories}}
 				</div>
 			</div>
 		</a>';
