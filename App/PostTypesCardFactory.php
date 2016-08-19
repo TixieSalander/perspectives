@@ -25,26 +25,6 @@ class PostTypesCardFactory
 	}
 
 
-	private function setBase($base_suffix = '', $content = '')
-	{
-		if (!is_string($base_suffix) && !is_string($content))
-			return '';
-
-		$base_name = 'base_' . $base_suffix;
-
-		$this->$base_name = $content;
-	}
-
-
-	private function fetchBaseContent($base_suffix = null)
-	{
-		if (!is_string($base_suffix))
-			return '';
-
-		return include __DIR__ . '/post_types_cards/' . $this->base_filename_preffix . $base_suffix . '.php';
-	}
-
-
 	public static function getInstance()
 	{
 		if (is_null(self::$_instance)) {
@@ -83,22 +63,6 @@ class PostTypesCardFactory
 
 		echo $html;
 
-	}
-
-
-	private function getMainModule()
-	{
-		$content = "";
-		$content .= "<div class=\"home-module__mainPart\">";
-		$content .= $this->getCard(null, [
-			'class_size' => $this->getModuleClass(4),
-		]);
-		$content .= "<div class=\"home-module__grid-2 home-module__grid-1-s\">";
-		$content .= implode('', $this->getCardList([2, 2]));
-		$content .= "</div>";
-		$content .= "</div>";
-
-		return $content;
 	}
 
 
@@ -181,66 +145,6 @@ class PostTypesCardFactory
 	}
 
 
-	private function getBase($base_suffix = '')
-	{
-		if (!is_string($base_suffix))
-			return '';
-
-		$base_name = 'base_' . $base_suffix;
-
-		return empty($this->$base_name) ? '' : $this->$base_name;
-	}
-
-
-	private function getModuleClass($cardSize)
-	{
-		switch ($cardSize) {
-			case 'suggestion':
-				return 'single-suggestion__item';
-				break;
-			case 4:
-				return 'home-moduleBig';
-				break;
-			case 3:
-				return 'home-moduleHigh';
-				break;
-			case 2:
-				return 'home-moduleMedium';
-				break;
-			case 1:
-				return 'home-moduleSmall';
-				break;
-			default:
-				return null;
-		}
-
-	}
-
-
-	private function getCardList($matrix = [], $context = null)
-	{
-		$list = [];
-		foreach ($matrix as $size) {
-			$list[] = $this->getCard(null, [
-				'class_size' => $this->getModuleClass($size),
-			], $context);
-		}
-
-		return $list;
-	}
-
-
-	private function getSideModule()
-	{
-		$content = "";
-		$content .= "<div class=\"home-module__sidePart home-module__sidePart-m home-module__sidePart-s\">";
-		$content .= implode('', $this->getCardList([3, 1]));
-		$content .= "</div>";
-
-		return $content;
-	}
-
-
 	public function getRelated()
 	{
 		global $post;
@@ -291,6 +195,117 @@ class PostTypesCardFactory
 
 		return $html;
 
+	}
+
+
+	public function printList($number)
+	{
+		$matrix = [];
+		for ($i = 0; $i < $number; $i++) $matrix[] = 'list';
+		$list = $this->getCardList($matrix);
+
+		foreach ($list as $card)
+			echo $card;
+
+	}
+
+
+	private function setBase($base_suffix = '', $content = '')
+	{
+		if (!is_string($base_suffix) && !is_string($content))
+			return '';
+
+		$base_name = 'base_' . $base_suffix;
+
+		$this->$base_name = $content;
+	}
+
+
+	private function fetchBaseContent($base_suffix = null)
+	{
+		if (!is_string($base_suffix))
+			return '';
+
+		return include __DIR__ . '/post_types_cards/' . $this->base_filename_preffix . $base_suffix . '.php';
+	}
+
+
+	private function getMainModule()
+	{
+		$content = "";
+		$content .= "<div class=\"home-module__mainPart\">";
+		$content .= $this->getCard(null, [
+			'class_size' => $this->getModuleClass(4),
+		]);
+		$content .= "<div class=\"home-module__grid-2 home-module__grid-1-s\">";
+		$content .= implode('', $this->getCardList([2, 2]));
+		$content .= "</div>";
+		$content .= "</div>";
+
+		return $content;
+	}
+
+
+	private function getBase($base_suffix = '')
+	{
+		if (!is_string($base_suffix))
+			return '';
+
+		$base_name = 'base_' . $base_suffix;
+
+		return empty($this->$base_name) ? '' : $this->$base_name;
+	}
+
+
+	private function getModuleClass($cardSize)
+	{
+		switch ($cardSize) {
+			case 'list':
+				return 'articleList__item';
+				break;
+			case 'suggestion':
+				return 'single-suggestion__item';
+				break;
+			case 4:
+				return 'home-moduleBig';
+				break;
+			case 3:
+				return 'home-moduleHigh';
+				break;
+			case 2:
+				return 'home-moduleMedium';
+				break;
+			case 1:
+				return 'home-moduleSmall';
+				break;
+			default:
+				return null;
+		}
+
+	}
+
+
+	private function getCardList($matrix = [], $context = null)
+	{
+		$list = [];
+		foreach ($matrix as $size) {
+			$list[] = $this->getCard(null, [
+				'class_size' => $this->getModuleClass($size),
+			], $context);
+		}
+
+		return $list;
+	}
+
+
+	private function getSideModule()
+	{
+		$content = "";
+		$content .= "<div class=\"home-module__sidePart home-module__sidePart-m home-module__sidePart-s\">";
+		$content .= implode('', $this->getCardList([3, 1]));
+		$content .= "</div>";
+
+		return $content;
 	}
 
 }
