@@ -29,13 +29,15 @@ function add_post_formats()
 	));
 }
 
-function rename_post_formats($translation, $text, $context, $domain) {
+function rename_post_formats($translation, $text, $context, $domain)
+{
 	$names = array(
-		'Aside' => 'Dossier'
+		'Aside' => 'Dossier',
 	);
 	if ($context == 'Post format') {
 		$translation = str_replace(array_keys($names), array_values($names), $text);
 	}
+
 	return $translation;
 }
 
@@ -91,12 +93,12 @@ function add_settings()
 
 	foreach ($global_config->socials_display as $key => $social) {
 
-		if($key === 'rss') continue;
+		if ($key === 'rss') continue;
 
 		$field_name = 'rs_' . $key;
 
 		add_settings_field($field_name, 'Lien vers ' . $social['img_alt'], function () use ($field_name) {
-			echo '<input name="'. $field_name .'" type="text" value="' . get_option($field_name, '') . '" placeholder="Laisser vide pour désactiver" />';
+			echo '<input name="' . $field_name . '" type="text" value="' . get_option($field_name, '') . '" placeholder="Laisser vide pour désactiver" />';
 		}, 'general', 'rs_settings');
 
 		register_setting('general', $field_name);
@@ -108,6 +110,18 @@ function add_settings()
 	}, 'general', 'rs_settings');
 
 	register_setting('general', 'rs_rss');
+
+}
+
+function modify_contact_methods($profile_fields)
+{
+
+	// Add new fields
+	$profile_fields['twitter'] = 'Twitter URL';
+	$profile_fields['facebook'] = 'Facebook URL';
+	$profile_fields['gplus'] = 'Google+ URL';
+
+	return $profile_fields;
 
 }
 
@@ -123,3 +137,4 @@ add_filter('the_content', 'medias_filter');
 add_filter('img_caption_shortcode', 'my_img_caption_shortcode', 10, 3);
 add_filter('upload_mimes', 'wpc_mime_types');
 add_filter('gettext_with_context', 'rename_post_formats', 10, 4);
+add_filter('user_contactmethods', 'modify_contact_methods');
