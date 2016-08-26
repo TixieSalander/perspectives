@@ -141,4 +141,15 @@ class Utils
 		return str_replace($patterns, $replaces, $blueprint);
 	}
 
+
+	public function getShareLink($social, $values = [])
+	{
+		$config = ConfigFactory::getConfig('global');
+
+		if (!array_key_exists($social, $config->socials_sharer_links))
+			return false;
+
+		return self::fillBlueprint($config->socials_sharer_links[ $social ], $values);
+	}
+
 }
