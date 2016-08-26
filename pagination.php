@@ -1,8 +1,5 @@
 <!-- Pagination module -->
 <div class="pagination">
-	<!-- More button -->
-	<!-- <a class="pagination__more" href="" title="Afficher les publications suivantes">Afficher plus</a> -->
-	<!-- Page number list -->
 	<?php
 
 	global $wp_query;
@@ -14,6 +11,15 @@
 
 		?>
 
+		<?php if ($current_page < $max_page) : ?>
+		
+		<!-- More button -->
+		<a class="pagination__more" href="<?= esc_url(get_pagenum_link($current_page + 1)) ?>" title="Afficher les publications suivantes">Afficher
+			plus</a>
+		<!-- Page number list -->
+
+		<?php endif; ?>
+
 
 		<ul class="pagination__list">
 
@@ -22,7 +28,7 @@
 			function printHtmlNumber($text, $page, $class = '')
 			{
 				echo "<li class=\"pagination__item\">
-							<a class=\"pagination__itemContent $class\" href='". esc_url( get_pagenum_link( $page ) ) ."'>$text</a>
+							<a class=\"pagination__itemContent $class\" href='" . esc_url(get_pagenum_link($page)) . "'>$text</a>
 						</li>";
 //							<a class=\"pagination__itemContent $class\" href='?page=$page'>$text</a>
 			}
