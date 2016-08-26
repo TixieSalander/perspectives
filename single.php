@@ -27,12 +27,12 @@ if (have_posts()) :
 						<span class="single-author__name"><?= the_author_meta('nickname') ?></span>
 						<span class="single-author__bio"><?= the_author_meta('description') ?></span>
 						<?php
-						$url = get_the_author_meta('user_url');
-
-						if (!empty($url)) :
+//						$url = get_the_author_meta('user_url');
+						global $authordata;
+//						if (!empty($url)) :
 							?>
-							<a class="single-author__button" href="<?= $url; ?>">En savoir plus</a>
-						<?php endif; ?>
+							<a class="single-author__button" href="<?= get_author_posts_url($authordata->ID); ?>">En savoir plus</a>
+<!--						--><?php //endif; ?>
 					</div>
 				</div>
 				<div class="single-article">
