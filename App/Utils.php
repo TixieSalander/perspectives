@@ -78,4 +78,67 @@ class Utils
 
 	}
 
+
+	public static function makeList($items, $ul_options = [], $li_options = [])
+	{
+
+
+		$li_str = "";
+
+		foreach ($items as $item) {
+
+			$li_blueprint = $li_options === false ? "html" : "<li options>html</li>";
+
+			$li_arr = [];
+			$li_arr["html"] = $item;
+			$li_arr["options"] = join(' ', self::getOptions(is_array($li_options) ? $li_options : [], ['html']));
+
+			$li_str .= ' ' . self::fillBlueprint($li_blueprint, $li_arr);
+
+		}
+
+		$ul_blueprint = $ul_options === false ? "[html]" : "<ul options>html</ul>";
+
+		$ul_arr = [
+			"html"    => $li_str,
+			"options" => join(' ', self::getOptions(is_array($ul_options) ? $ul_options : [], ['html'])),
+		];
+
+		$ul_str = self::fillBlueprint($ul_blueprint, $ul_arr);
+
+		return $ul_str;
+
+	}
+
+
+	private static function getOptions($item, $exclude = [])
+	{
+		$options = [];
+
+		foreach ($item as $key => $value) {
+
+			if (array_key_exists($key, $exclude)) continue;
+
+			$options[ $key ] = "$key='$value'";
+
+		}
+
+		return $options;
+	}
+
+
+	/**
+	 * @param $blueprint
+	 * @param $elements
+	 * @return string
+	 */
+	public function fillBlueprint($blueprint, $elements)
+	{
+
+		$patterns = array_keys($elements);
+		$replaces = array_values($elements);
+
+		return str_replace($patterns, $replaces, $blueprint);
+	}
+
 }
