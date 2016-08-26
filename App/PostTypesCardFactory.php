@@ -6,6 +6,7 @@ class PostTypesCardFactory
 {
 
 	private static $_instance;
+	public $last_post;
 	private $base_filename_preffix = 'raw_base_';
 	private $svg_icon;
 	private $have_post = true;
@@ -69,42 +70,10 @@ class PostTypesCardFactory
 	public function getCard($base_suffix = null, $values = [], $context = null)
 	{
 
-		if (is_null($context)) {
+		if (is_null($this->getNextPost($context)))
+			return null;
 
-			if (!$this->have_post || !have_posts()) {
-				$this->have_post = false;
-
-				return null;
-			}
-
-			the_post();
-
-		} else {
-
-			if (!$this->have_post || !$context->have_posts()) {
-				$this->have_post = false;
-
-				return null;
-			}
-
-			$context->the_post();
-
-		}
-
-		$categories = [];
-
-		foreach (get_the_category() as $cat) {
-			$categories[] = $cat->cat_name;
-		}
-
-		$values = array_merge([
-			'title'       => get_the_title(),
-			'permalink'   => get_the_permalink(),
-			'thumbnail'   => get_the_post_thumbnail_url(),
-			'format_name' => get_post_format(),
-			'categories'  => $categories,
-			'excerpt'     => get_the_excerpt(),
-		], $values);
+		$values = array_merge($this->last_post, $values);
 
 		$values['type_icon'] = count($values['categories']) === 0 ? '' : $this->svg_icon;
 
@@ -306,6 +275,53 @@ class PostTypesCardFactory
 		$content .= "</div>";
 
 		return $content;
+	}
+
+
+	private function getNextPost($context = null)
+	{
+
+		if (is_null($context)) {
+
+			if (!$this->have_post || !have_posts()) {
+				$this->have_post = false;
+
+				return null;
+			}
+
+			the_post();
+
+		} else {
+
+			if (!$this->have_post || !$context->have_posts()) {
+				$this->have_post = false;
+
+				return null;
+			}
+
+			$context->the_post();
+
+		}
+
+		$categories = [];
+
+		foreach (get_the_category() as $cat) {
+			$categories[] = $cat->cat_name;
+		}
+
+
+		$this->last_post = [
+			'title'       => get_the_title(),
+			'permalink'   => get_the_permalink(),
+			'thumbnail'   => get_the_post_thumbnail_url(),
+			'format_name' => get_post_format(),
+			'categories'  => $categories,
+			'excerpt'     => get_the_excerpt(),
+			'tags'        => get_the_tags(),
+		];
+
+		return $this->last_post;
+
 	}
 
 }
