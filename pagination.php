@@ -6,8 +6,7 @@
 	<?php
 
 	global $wp_query;
-
-	$current_page = intval(get_query_var('paged', 1) || 1);
+	$current_page = max(intval(get_query_var('paged', 1)), 1);
 	$max_page = intval($wp_query->max_num_pages);
 	$mid_size = 2;
 
