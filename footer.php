@@ -1,13 +1,16 @@
 <?php
 
 use App\Cache\DataCache;
+use App\Cache\UrlCache;
 use App\Utils;
 use Bolandish\Instagram;
 
 
-$cache = DataCache::getInstance();
+$dataCache = DataCache::getInstance();
+$urlCache = UrlCache::getInstance();
+$theme_path = get_bloginfo("template_directory");
 
-$data = $cache->readOrWrite('instagram', function () {
+$data = $dataCache->readOrWrite('instagram', function () {
 	return json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
 }, 1800);
 
@@ -25,7 +28,7 @@ $data = json_decode($data, true);
 			<li class="instaGallery__item">
 				<a class="instaGallery__link" target="_blank" href="https://www.instagram.com/p/<?= $insta['code'] ?>"
 				   title="<?= $insta['caption'] ?>">
-					<img class="instaGallery__image" src="<?= $insta['thumbnail_src'] ?>" alt="<?= $insta['caption'] ?>"/>
+					<img class="instaGallery__image" src="<?= $theme_path . '/img/cache/' . $urlCache->getBasenameOrCacheUrl($insta['thumbnail_src'], $insta_expire) ?>" alt="<?= $insta['caption'] ?>"/>
 				</a>
 			</li>
 
@@ -38,7 +41,7 @@ $data = json_decode($data, true);
 			<div class="txtcenter">
 				<div class="footer__collectif">
 					<a href="" title="Le collectif Perspectives">
-						<img src="<?= bloginfo("template_directory") ?>/img/logo-collectif.svg" alt="Le collectif Perspectives"/>
+						<img src="<?= $theme_path ?>/img/logo-collectif.svg" alt="Le collectif Perspectives"/>
 					</a>
 				</div>
 			</div>
