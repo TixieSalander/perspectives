@@ -116,10 +116,13 @@ class CacheFile
 	 * Chech if the cache element is expired or not
 	 *
 	 * @param DateInterval $interval
-	 * @return bool True if expired, false if valid
+	 * @return bool True if expired or doesn't exist, false if valid
 	 */
 	public function isExpired(DateInterval $interval)
 	{
+		if (!$this->isFileExist())
+			return true;
+
 		$modifiedAt = $this->getModifiedAt();
 
 		if (!$modifiedAt instanceof DateTime)
@@ -129,6 +132,12 @@ class CacheFile
 		$expire_date->add($interval);
 
 		return $expire_date <= new DateTime();
+	}
+
+
+	public function getAbsolutePath()
+	{
+		return realpath($this->path);
 	}
 
 
