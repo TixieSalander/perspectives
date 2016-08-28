@@ -57,7 +57,7 @@ class UrlCache extends CacheManager
 	public function ensureCacheFolder()
 	{
 		if (!file_exists($this->cache_path))
-			mkdir($this->cache_path, 0704, true);
+			mkdir($this->cache_path, 0755, true);
 	}
 
 

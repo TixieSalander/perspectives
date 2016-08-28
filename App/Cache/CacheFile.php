@@ -58,6 +58,9 @@ class CacheFile
 	{
 		file_put_contents($this->path, $data, LOCK_EX);
 
+		if ($this->isFileExist())
+			chmod($this->path, 0604);
+
 		$this->data = $data;
 		$this->file_exist = true;
 		$this->updateModifiedAt();
