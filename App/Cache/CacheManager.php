@@ -153,10 +153,10 @@ class CacheManager implements CacheInterface
 				return $cache_file->isExpired(new DateInterval('PT' . $sec_interval . 'S'));
 				break;
 			case 'all_expire' :
-				return false;
+				return true;
 				break;
 			case 'no_expire':
-				return true;
+				return false;
 				break;
 			default:
 				return $cache_file->isExpired(new DateInterval('PT' . $sec_interval . 'S'));
