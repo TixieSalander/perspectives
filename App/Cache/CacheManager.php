@@ -25,7 +25,9 @@ class CacheManager implements CacheInterface
 	{
 		$this->files_cache = [];
 		$this->cache_config = ConfigFactory::getConfig('cache');
-		$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
+
+		if (empty($this->cache_path))
+			$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
 
 		$extension = $this->cache_config->cache_extension;
 
@@ -33,6 +35,8 @@ class CacheManager implements CacheInterface
 			$this->cache_extension = '';
 		else
 			$this->cache_extension = '.' . $extension;
+
+		$this->ensureCacheFolder();
 	}
 
 
@@ -110,6 +114,13 @@ class CacheManager implements CacheInterface
 	{
 		$this->getFileCache($cache)->delete();
 		unset($this->files_cache[ $cache ]);
+	}
+
+
+	protected function ensureCacheFolder()
+	{
+		if(!file_exists($this->cache_path))
+			mkdir($this->cache_path, 0700, true);
 	}
 
 
