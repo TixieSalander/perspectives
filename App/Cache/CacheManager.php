@@ -23,19 +23,7 @@ class CacheManager implements CacheInterface
 	 */
 	protected function __construct()
 	{
-		$this->files_cache = [];
-		$this->cache_config = ConfigFactory::getConfig('cache');
-
-		if (empty($this->cache_path))
-			$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
-
-		$extension = $this->cache_config->cache_extension;
-
-		if (!is_string($extension) || empty($extension))
-			$this->cache_extension = '';
-		else
-			$this->cache_extension = '.' . $extension;
-
+		$this->initConfigs();
 		$this->ensureCacheFolder();
 	}
 
@@ -66,10 +54,7 @@ class CacheManager implements CacheInterface
 	{
 		$cache_file = $this->getFileCache($name . $this->cache_extension);
 
-		if (is_null($expire))
-			$expire = $this->cache_config->default_expired_time;
-
-		if ($expire !== false && ($expire === true || $this->isCacheFileExpired($cache_file, $expire))) {
+		if (!$this->isCacheFileValid($cache_file, $expire)) {
 			$this->remove($name);
 
 			return null;
@@ -117,9 +102,37 @@ class CacheManager implements CacheInterface
 	}
 
 
+	protected function initConfigs()
+	{
+		$this->files_cache = [];
+		$this->cache_config = ConfigFactory::getConfig('cache');
+
+		$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
+
+		$extension = $this->cache_config->cache_extension;
+
+		if (!is_string($extension) || empty($extension))
+			$this->cache_extension = '';
+		else
+			$this->cache_extension = '.' . $extension;
+	}
+
+
+	protected function isCacheFileValid(CacheFile $cache_file, $expire)
+	{
+		if (is_null($expire))
+			$expire = $this->cache_config->default_expired_time;
+
+		if ($expire !== false && ($expire === true || $this->isCacheFileExpired($cache_file, $expire)))
+			return false;
+		else
+			return true;
+	}
+
+
 	protected function ensureCacheFolder()
 	{
-		if(!file_exists($this->cache_path))
+		if (!file_exists($this->cache_path))
 			mkdir($this->cache_path, 0700, true);
 	}
 
