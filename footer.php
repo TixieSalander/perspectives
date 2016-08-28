@@ -1,24 +1,17 @@
 <?php
 
-use App\Cache;
+use App\Cache\DataCache;
 use App\Utils;
 use Bolandish\Instagram;
 
-$cache = Cache::getInstance();
 
-$data = $cache->read('instagram', 1800);
+$cache = DataCache::getInstance();
 
-if (empty($data)) {
+$data = $cache->readOrWrite('instagram', function () {
+	return json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
+}, 1800);
 
-	$data = Instagram::getMediaByUserID('3166050484', 10, true);
-	$cache->write('instagram', json_encode($data));
-
-}else {
-
-	$data = json_decode($data, true);
-	
-}
-
+$data = json_decode($data, true);
 
 ?>
 
@@ -30,7 +23,8 @@ if (empty($data)) {
 		<?php foreach ($data as $insta) : ?>
 
 			<li class="instaGallery__item">
-				<a class="instaGallery__link" target="_blank" href="https://www.instagram.com/p/<?= $insta['code'] ?>" title="<?= $insta['caption'] ?>">
+				<a class="instaGallery__link" target="_blank" href="https://www.instagram.com/p/<?= $insta['code'] ?>"
+				   title="<?= $insta['caption'] ?>">
 					<img class="instaGallery__image" src="<?= $insta['thumbnail_src'] ?>" alt="<?= $insta['caption'] ?>"/>
 				</a>
 			</li>
@@ -59,7 +53,7 @@ if (empty($data)) {
 						</li>
 
 						<?= Utils::getWPMenu('footer-menu', false); ?>
-						
+
 					</ul>
 				</div>
 			</div>

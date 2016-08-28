@@ -8,7 +8,7 @@ return [
 	 *
 	 * */
 
-	'mode' => 'no_expire',
+	'mode' => 'production',
 
 
 	/*
@@ -17,7 +17,11 @@ return [
 	 *
 	 * */
 
-	'cache_folder' => 'cache',
+	'paths' => [
+		'default' => 'cache/',
+//		'data'    => 'cache/',
+//		'file'    => 'cache/',
+	],
 
 	/*
 	 * Write down the extension you want
@@ -26,6 +30,8 @@ return [
 	 * */
 
 	'cache_extension' => 'cache',
+
+	'default_expired_time' => 3600,
 
 
 	/*
