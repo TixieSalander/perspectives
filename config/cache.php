@@ -8,7 +8,7 @@ return [
 	 *
 	 * */
 
-	'mode' => 'production',
+	'mode' => 'no_expire',
 
 
 	/*
