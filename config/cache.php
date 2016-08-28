@@ -21,6 +21,7 @@ return [
 		'default' => 'cache/',
 //		'data'    => 'cache/',
 //		'file'    => 'cache/',
+		'url'     => 'img/cache/',
 	],
 
 	/*
