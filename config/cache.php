@@ -29,7 +29,8 @@ return [
 	 *
 	 * */
 
-	'cache_extension' => 'cache',
+	'cache_extension' => '',
+//	'cache_extension' => 'cache',
 
 	'default_expired_time' => 3600,
 
