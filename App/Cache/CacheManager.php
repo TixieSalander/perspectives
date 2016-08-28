@@ -133,7 +133,7 @@ class CacheManager implements CacheInterface
 	protected function ensureCacheFolder()
 	{
 		if (!file_exists($this->cache_path))
-			mkdir($this->cache_path, 0700, true);
+			mkdir($this->cache_path, 0600, true);
 	}
 
 
