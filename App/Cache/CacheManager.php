@@ -26,7 +26,13 @@ class CacheManager implements CacheInterface
 		$this->files_cache = [];
 		$this->cache_config = ConfigFactory::getConfig('cache');
 		$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
-		$this->cache_extension = $this->cache_config->cache_extension;
+
+		$extension = $this->cache_config->cache_extension;
+
+		if (!is_string($extension) || empty($extension))
+			$this->cache_extension = '';
+		else
+			$this->cache_extension = '.' . $extension;
 	}
 
 
@@ -54,7 +60,7 @@ class CacheManager implements CacheInterface
 	 */
 	public function read($name, $expire = null)
 	{
-		$cache_file = $this->getFileCache($name . '.' . $this->cache_extension);
+		$cache_file = $this->getFileCache($name . $this->cache_extension);
 
 		if (is_null($expire))
 			$expire = $this->cache_config->default_expired_time;
@@ -71,7 +77,7 @@ class CacheManager implements CacheInterface
 
 	public function write($name, $value = null)
 	{
-		$cache_file = $this->getFileCache($name . '.' . $this->cache_extension);
+		$cache_file = $this->getFileCache($name . $this->cache_extension);
 		$cache_file->setData($value);
 
 		return $cache_file->getData();
@@ -115,7 +121,7 @@ class CacheManager implements CacheInterface
 	protected function isCacheFileExpired(CacheFile $cache_file, $sec_interval)
 	{
 
-		if(!is_int($sec_interval))
+		if (!is_int($sec_interval))
 			return false;
 
 		switch ($this->cache_config->mode) {
