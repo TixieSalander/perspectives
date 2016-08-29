@@ -11,8 +11,14 @@ $urlCache = UrlCache::getInstance();
 $theme_path = get_bloginfo("template_directory");
 
 $data = $dataCache->readOrWrite('instagram', function () {
-	return json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
-}, 1800);
+	$data = json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
+
+	if(is_null($data))
+		return UrlCache::$_no_write;
+	else
+		return $data;
+
+}, 1800, $urlCache::$_no_delete);
 
 $data = json_decode($data, true);
 

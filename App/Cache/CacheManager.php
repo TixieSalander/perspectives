@@ -10,7 +10,11 @@ use DateInterval;
 class CacheManager implements CacheInterface
 {
 
+	static public $_read_only = 0x1;
+	static public $_no_write = 0x2;
+	static public $_no_delete = 0x4;
 	static protected $_instances;
+
 	protected $path_base = __DIR__ . '/../../';
 	protected $files_cache;
 	protected $cache_path;
@@ -48,14 +52,17 @@ class CacheManager implements CacheInterface
 	/**
 	 * @param string $name
 	 * @param null|int|bool $expire The expire time in seconds
+	 * @param null|int $flags
 	 * @return mixed|null
 	 */
-	public function read($name, $expire = null)
+	public function read($name, $expire = null, $flags = null)
 	{
 		$cache_file = $this->getFileCache($name . $this->cache_extension);
 
-		if (!$this->isCacheFileValid($cache_file, $expire)) {
-			$this->remove($name);
+		if (!$this->isCacheFileValid($cache_file, $expire, $flags)) {
+
+			if(!$flags & self::$_no_delete)
+				$this->remove($name);
 
 			return null;
 		}
@@ -64,7 +71,7 @@ class CacheManager implements CacheInterface
 	}
 
 
-	public function write($name, $value = null)
+	public function write($name, $value = null, $flags = null)
 	{
 		$cache_file = $this->getFileCache($name . $this->cache_extension);
 		$cache_file->setData($value);
@@ -73,11 +80,12 @@ class CacheManager implements CacheInterface
 	}
 
 
-	public function readOrWrite($name, $toWrite, $expire = null)
+	public function readOrWrite($name, $toWrite, $expire = null, $flags = null)
 	{
-		$data = $this->read($name, $expire);
 
-		if (is_null($data)) {
+		$data = $this->read($name, $expire, $flags);
+
+		if (is_null($data) && !($flags & self::$_read_only || $flags & self::$_no_write)) {
 
 			if (is_callable($toWrite))
 				$data = $this->write($name, $toWrite());
