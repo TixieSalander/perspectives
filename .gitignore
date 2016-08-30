@@ -6,15 +6,17 @@
 node_modules/
 
 style.css
-/img/
-/js/
+/img/**
+!/img/cache/.htaccess
+!/img/cache/index.php
+js/
 /cache/
 
 # OS
 .DS_Store
 ._*
 Thumbs.db
-.cache
+*.cache
 .project
 .settings
 .tmproj
