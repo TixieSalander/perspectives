@@ -24,28 +24,13 @@ class CacheManager implements CacheInterface
 
 	/**
 	 * CacheManager constructor.
+	 *
+	 * @param bool $url To instanciate with a different cache url
 	 */
-	protected function __construct()
+	public function __construct($url = false)
 	{
 		$this->initConfigs();
 		$this->ensureCacheFolder();
-	}
-
-
-	/**
-	 * @return CacheManager
-	 */
-	final public static function getInstance()
-	{
-		self::$_instances = array();
-
-		$calledClass = get_called_class();
-
-		if (!isset($instances[ $calledClass ])) {
-			$instances[ $calledClass ] = new $calledClass();
-		}
-
-		return $instances[ $calledClass ];
 	}
 
 
@@ -61,7 +46,7 @@ class CacheManager implements CacheInterface
 
 		if (!$this->isCacheFileValid($cache_file, $expire, $flags)) {
 
-			if(!$flags & self::$_no_delete)
+			if (!$flags & self::$_no_delete)
 				$this->remove($name);
 
 			return null;
@@ -74,7 +59,9 @@ class CacheManager implements CacheInterface
 	public function write($name, $value = null, $flags = null)
 	{
 		$cache_file = $this->getFileCache($name . $this->cache_extension);
-		$cache_file->setData($value);
+
+		if (!($flags & self::$_read_only || $flags & self::$_no_write))
+			$cache_file->setData($value);
 
 		return $cache_file->getData();
 	}
@@ -87,10 +74,16 @@ class CacheManager implements CacheInterface
 
 		if (is_null($data) && !($flags & self::$_read_only || $flags & self::$_no_write)) {
 
-			if (is_callable($toWrite))
-				$data = $this->write($name, $toWrite());
-			else
+			if (is_callable($toWrite)) {
+
+				$foo_data = $toWrite($data);
+
+				if (!$foo_data & self::$_no_write)
+					$data = $this->write($name, $foo_data);
+
+			} else {
 				$data = $this->write($name, $toWrite);
+			}
 
 		}
 
@@ -110,12 +103,26 @@ class CacheManager implements CacheInterface
 	}
 
 
-	protected function initConfigs()
+	public function isCacheEntryExpired($name, $expire = null)
+	{
+		$cache_file = $this->getFileCache($name);
+
+		if (is_null($expire))
+			$expire = $this->cache_config->default_expired_time;
+
+		return $this->isCacheFileExpired($cache_file, $expire);
+	}
+
+
+	protected function initConfigs($url = false)
 	{
 		$this->files_cache = [];
 		$this->cache_config = ConfigFactory::getConfig('cache');
 
-		$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
+		if (is_string($url) && !empty($url))
+			$this->cache_path = $this->path_base . $url;
+		else
+			$this->cache_path = $this->path_base . $this->cache_config->paths['default'];
 
 		$extension = $this->cache_config->cache_extension;
 
@@ -126,7 +133,7 @@ class CacheManager implements CacheInterface
 	}
 
 
-	protected function isCacheFileValid(CacheFile $cache_file, $expire)
+	protected function isCacheFileValid(CacheFile $cache_file, $expire, $flags = null)
 	{
 		if (is_null($expire))
 			$expire = $this->cache_config->default_expired_time;
