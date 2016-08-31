@@ -99,7 +99,7 @@ if (empty($imgCacheRef_content)) {
 				<a class="instaGallery__link" target="_blank" href="https://www.instagram.com/p/<?= $insta['code'] ?>"
 				   title="<?= $insta['caption'] ?>">
 					<img class="instaGallery__image"
-					     src="<?= $theme_path . '/img/cache/' . $thumb_id ?>"
+					     src="<?= $theme_path . '/img/' . $thumb_id ?>"
 					     alt="<?= $insta['caption'] ?>"/>
 				</a>
 			</li>

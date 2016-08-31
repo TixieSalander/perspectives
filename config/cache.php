@@ -8,6 +8,7 @@ return [
 	 *
 	 * */
 
+//	'mode' => 'production',
 	'mode' => 'no_expire',
 
 
@@ -21,7 +22,7 @@ return [
 		'default' => 'cache/',
 //		'data'    => 'cache/',
 //		'file'    => 'cache/',
-		'url'     => 'img/cache/',
+		'url'     => 'cache/img/',
 	],
 
 	/*

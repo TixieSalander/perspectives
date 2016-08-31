@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use App\Cache\CacheFile;
 use App\Cache\CacheManager;
@@ -28,18 +28,18 @@ if (empty($_GET['id'])
 $img_ref = $_GET['id'];
 $img_expire = 86400 * 7;
 $dataCache = new DataCache();
-$imgCache = new UrlCache('cache/img/');
+$imgCache = new UrlCache('img/cache/');
 
 $imgCacheRef_content = $dataCache->read("img-cache", false, CacheManager::$_no_delete);
 $imgCacheRefs = json_decode($imgCacheRef_content, true);
 
 foreach ($imgCacheRefs as $id => $url) {
-
+	
 	if ($id === $img_ref) {
 		response($url, $id);
 		exit;
 	}
-
+	
 }
 
 /**
@@ -49,28 +49,28 @@ foreach ($imgCacheRefs as $id => $url) {
 function response($cacheUrl, $cacheFilename)
 {
 	global $img_expire, $imgCache;
-
+	
 	$content = $imgCache->readOrCacheUrl($cacheFilename, $cacheUrl, $img_expire, CacheManager::$_no_delete);
-
-
+	
+	
 	$cache_file = $imgCache->getFileCache($cacheFilename);
-
+	
 	if (!$cache_file->isFileExist()) {
 		send404();
 	}
-
+	
 	$modifiedAt = empty($cache_file->getModifiedAt()) ? new DateTime() : $cache_file->getModifiedAt();
-
+	
 	$abs_path = $cache_file->getAbsolutePath();
 	$cache_file_size = filesize($abs_path);
 	$type = pathinfo($cacheFilename, PATHINFO_EXTENSION);
-
+	
 	$tsstring = $modifiedAt->format('rfc1123');
 	$etag = md5($cacheFilename . $modifiedAt->getTimestamp());
-
+	
 	$if_modified_since = isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : false;
 	$if_none_match = isset($_SERVER['HTTP_IF_NONE_MATCH']) ? $_SERVER['HTTP_IF_NONE_MATCH'] : false;
-
+	
 	if ((($if_none_match && $if_none_match == $etag) || (!$if_none_match))
 		&& ($if_modified_since && $if_modified_since == $tsstring)
 	) {

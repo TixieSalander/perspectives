@@ -1,3 +1,0 @@
-Options -Indexes
-RewriteEngine On
-RewriteRule ^([a-zA-Z0-9.]{23}\.[a-zA-Z]+)$ index.php?id=$1 [L]
