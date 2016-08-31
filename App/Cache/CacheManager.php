@@ -13,6 +13,7 @@ class CacheManager implements CacheInterface
 	static public $_read_only = 0x1;
 	static public $_no_write = 0x2;
 	static public $_no_delete = 0x4;
+	static public $_force_read = 0x6;
 	static protected $_instances;
 
 	protected $path_base = __DIR__ . '/../../';
@@ -78,8 +79,12 @@ class CacheManager implements CacheInterface
 
 				$foo_data = $toWrite($data);
 
-				if (!$foo_data & self::$_no_write)
+				if($foo_data & self::$_force_read)
+					$data = $this->getFileCache($name)->getData();
+
+				if (!($foo_data & self::$_no_write)) {
 					$data = $this->write($name, $foo_data);
+				}
 
 			} else {
 				$data = $this->write($name, $toWrite);
