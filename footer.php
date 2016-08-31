@@ -17,12 +17,17 @@ $isImgCacheRefModified = false;
 
 $data = $dataCache->readOrWrite('instagram', function () {
 
-	$data = json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
+	$data = null;
+
+	try {
+		$data = Instagram::getMediaByUserID('3166050484', 10, true);
+	} catch (Exception $e) {
+	}
 
 	if (empty($data))
 		return UrlCache::$_no_write | UrlCache::$_force_read;
 	else
-		return $data;
+		return json_encode($data);
 
 }, 1800, $urlCache::$_no_delete);
 
