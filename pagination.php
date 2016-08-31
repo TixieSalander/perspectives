@@ -18,7 +18,7 @@
 			plus</a>
 		<!-- Page number list -->
 
-		<?php endif; ?>
+	<?php endif; ?>
 
 
 		<ul class="pagination__list">
@@ -36,8 +36,8 @@
 			function printDesactivated()
 			{
 				echo '<li class="pagination__item">
-								<span class="pagination__itemContent pagination__itemContent--desactivated">…</span>
-							</li>';
+						<span class="pagination__itemContent pagination__itemContent--desactivated">…</span>
+					</li>';
 			}
 
 			if ($current_page > 1)
@@ -45,13 +45,22 @@
 
 			printHtmlNumber("1", 1, $current_page === 1 ? 'pagination__itemContent--current' : '');
 
-			if ($current_page - $mid_size > 1)
+			$mid_min = max(1, $current_page - $mid_size);
+			$mid_max = min($max_page, $current_page + $mid_size);
+
+
+			if ($mid_min >= $mid_size)
 				printDesactivated();
 
-			for ($i = $current_page - $mid_size + 1; $i > 1 && $i < $current_page + $mid_size && $current_page < $max_page; $i++)
+			for($i = $mid_min + 1; $i < $mid_max; $i++) {
 				printHtmlNumber($i, $i, $current_page === $i ? 'pagination__itemContent--current' : '');
+			}
 
-			if ($current_page + $mid_size < $max_page)
+			//			for ($i = $current_page - $mid_size + 1; $i > 1 && $i < $current_page + $mid_size && $current_page < $max_page; $i++)
+			//				printHtmlNumber($i, $i, $current_page === $i ? 'pagination__itemContent--current' : '');
+
+
+			if ($mid_max - 1 <= $max_page - $mid_size)
 				printDesactivated();
 
 			printHtmlNumber($max_page, $max_page, $max_page === $current_page ? 'pagination__itemContent--current' : '');
