@@ -86,7 +86,9 @@ if (empty($imgCacheRef_content)) {
 			}
 
 			if (empty($thumb_id)) {
-				$thumb_id = uniqid('', true);
+				$thumb_id = uniqid('', true) . '.' . pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+//				var_dump($url);
 
 				$isImgCacheRefModified = true;
 
