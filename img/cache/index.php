@@ -20,7 +20,7 @@ function send403()
 }
 
 if (empty($_GET['id'])
-	|| !preg_match('/[a-zA-Z0-9.]{23}/', $_GET['id'])
+	|| !preg_match('/^[a-zA-Z0-9.]{23}\.[a-zA-Z]+$/', $_GET['id'])
 ) {
 	send404();
 }
@@ -31,26 +31,15 @@ $dataCache = new DataCache();
 $imgCache = new UrlCache('cache/img/');
 
 $imgCacheRef_content = $dataCache->read("img-cache", false, CacheManager::$_no_delete);
-$imgCacheRefs = explode("\n", $imgCacheRef_content);
+$imgCacheRefs = json_decode($imgCacheRef_content, true);
 
-foreach ($imgCacheRefs as $line) {
+foreach ($imgCacheRefs as $id => $url) {
 
-	if (empty($line))
-		continue;
-
-	$cache_raw = explode(",", $line);
-
-	if (empty($cache_raw))
-		continue;
-
-	$cacheFilename = $cache_raw[0];
-	$cacheUrl = $cache_raw[1];
-
-	if ($cacheFilename === $img_ref) {
-
-		response($cacheUrl, $cacheFilename);
+	if ($id === $img_ref) {
+		response($url, $id);
 		exit;
 	}
+
 }
 
 /**

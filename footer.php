@@ -16,39 +16,36 @@ $isImgCacheRefModified = false;
 
 
 $data = $dataCache->readOrWrite('instagram', function () {
+
 	$data = json_encode(Instagram::getMediaByUserID('3166050484', 10, true));
 
-	if (is_null($data))
-		return UrlCache::$_no_write;
+	if (empty($data))
+		return UrlCache::$_no_write | UrlCache::$_force_read;
 	else
 		return $data;
 
 }, 1800, $urlCache::$_no_delete);
 
-
 $data = json_decode($data, true);
-
 
 $imgCacheRef_content = $dataCache->readOrWrite("img-cache", function ($data) use ($imgCache, $img_expire) {
 
 
 	if (empty($data))
-		return CacheManager::$_no_write;
+		return CacheManager::$_no_write | CacheManager::$_force_read;
 
-	$lines = explode("\n", $data);
+	$cache = json_decode($data, true);
 
-	foreach ($lines as $key => $line) {
-		$cache_raw = explode(",", $line);
+	foreach ($cache as $id => $url) {
 
-		$cacheFilename = $cache_raw[0];
+		if ($imgCache->isCacheEntryExpired($id, $img_expire)) {
+			$imgCache->remove($id);
+			unset($cache[ $id ]);
+		}
 
-		if ($imgCache->isCacheEntryExpired($cacheFilename, $img_expire))
-			$imgCache->remove($cacheFilename);
-
-		unset($lines[ $key ]);
 	}
 
-	$toWrite = join("\n", $lines);
+	$toWrite = json_encode($cache);
 
 	return $toWrite;
 
@@ -58,8 +55,8 @@ $newImgCacheRefs = [];
 
 if (empty($imgCacheRef_content)) {
 	$imgCacheRef = [];
-}else {
-	$imgCacheRef = explode("\n", $imgCacheRef_content);
+} else {
+	$imgCacheRef = json_decode($imgCacheRef_content, true);
 }
 
 
@@ -75,12 +72,10 @@ if (empty($imgCacheRef_content)) {
 			$thumb_id = null;
 			$url = $insta['thumbnail_src'];
 
-			foreach ($imgCacheRef as $ref) {
+			foreach ($imgCacheRef as $cache_id => $cahce_url) {
 
-				$raw = explode(",", $ref, 2);
-
-				if ($url === $raw[1]) {
-					$thumb_id = $raw[0];
+				if ($url === $cahce_url) {
+					$thumb_id = $cache_id;
 				}
 
 			}
@@ -88,11 +83,9 @@ if (empty($imgCacheRef_content)) {
 			if (empty($thumb_id)) {
 				$thumb_id = uniqid('', true) . '.' . pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION);
 
-//				var_dump($url);
-
 				$isImgCacheRefModified = true;
 
-				$newImgCacheRefs[] = "$thumb_id,$url\n";
+				$newImgCacheRefs[ $thumb_id ] = $url;
 			}
 
 			?>
@@ -141,7 +134,7 @@ if (empty($imgCacheRef_content)) {
 
 if ($isImgCacheRefModified) {
 	$imgCacheRef = array_merge($imgCacheRef, $newImgCacheRefs);
-	$dataCache->write('img-cache', join("", $imgCacheRef));
+	$dataCache->write('img-cache', json_encode($imgCacheRef));
 }
 ?>
 <?php get_search_form() ?>
