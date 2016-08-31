@@ -184,7 +184,7 @@ class CacheManager implements CacheInterface
 	 * @param $filename string
 	 * @return CacheFile
 	 */
-	protected function getFileCache($filename)
+	public function getFileCache($filename)
 	{
 		if (array_key_exists($filename, $this->files_cache))
 			return $this->files_cache[ $filename ];
@@ -193,8 +193,7 @@ class CacheManager implements CacheInterface
 
 		return $this->files_cache[ $filename ];
 	}
-
-
+	
 	final private function __clone()
 	{
 	}

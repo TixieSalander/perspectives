@@ -9,14 +9,14 @@ use DateTime;
 
 class CacheFile
 {
-
+	
 	private $basename;
 	private $modifiedAt;
 	private $path;
 	private $file_exist;
 	private $data;
-
-
+	
+	
 	/**
 	 * CacheFile constructor.
 	 *
@@ -24,14 +24,14 @@ class CacheFile
 	 */
 	public function __construct($path)
 	{
-
+		
 		$this->basename = pathinfo($path, PATHINFO_BASENAME);
 		$this->dirname = pathinfo($path, PATHINFO_DIRNAME);
 		$this->path = $path;
-
+		
 	}
-
-
+	
+	
 	/**
 	 * Get the data of the cache element
 	 *
@@ -41,14 +41,14 @@ class CacheFile
 	{
 		if (!$this->isFileExist())
 			return null;
-
+		
 		if (!isset($this->data))
 			$this->data = file_get_contents($this->path);
-
+		
 		return $this->data;
 	}
-
-
+	
+	
 	/**
 	 * Set the data of the cache element
 	 *
@@ -57,16 +57,16 @@ class CacheFile
 	public function setData($data)
 	{
 		file_put_contents($this->path, $data, LOCK_EX);
-
+		
 		if ($this->isFileExist())
 			chmod($this->path, 0604);
-
+		
 		$this->data = $data;
 		$this->file_exist = true;
 		$this->updateModifiedAt();
 	}
-
-
+	
+	
 	/**
 	 * Check if the file exist or not
 	 *
@@ -76,11 +76,11 @@ class CacheFile
 	{
 		if (!isset($this->file_exist))
 			$this->file_exist = file_exists($this->path);
-
+		
 		return $this->file_exist;
 	}
-
-
+	
+	
 	/**
 	 * Get the last modified at value of the cache
 	 *
@@ -88,18 +88,18 @@ class CacheFile
 	 */
 	public function getModifiedAt()
 	{
-
+		
 		if (!$this->isFileExist())
 			return null;
-
+		
 		if (!isset($this->modifiedAt))
 			$this->updateModifiedAt();
-
+		
 		return $this->modifiedAt;
-
+		
 	}
-
-
+	
+	
 	/**
 	 * Delete the cache file
 	 *
@@ -110,11 +110,11 @@ class CacheFile
 		if ($this->isFileExist()) {
 			return unlink($this->path);
 		}
-
+		
 		return false;
 	}
-
-
+	
+	
 	/**
 	 * Chech if the cache element is expired or not
 	 *
@@ -125,25 +125,25 @@ class CacheFile
 	{
 		if (!$this->isFileExist())
 			return true;
-
+		
 		$modifiedAt = $this->getModifiedAt();
-
+		
 		if (!$modifiedAt instanceof DateTime)
 			return true;
 		
 		$expire_date = clone $modifiedAt;
 		$expire_date->add($interval);
-
+		
 		return $expire_date <= new DateTime();
 	}
-
-
+	
+	
 	public function getAbsolutePath()
 	{
 		return realpath($this->path);
 	}
-
-
+	
+	
 	/**
 	 * Just update the modifiedAt value
 	 */
@@ -152,5 +152,5 @@ class CacheFile
 		if ($this->isFileExist())
 			$this->modifiedAt = new DateTime('@' . filemtime($this->path));
 	}
-
+	
 }
