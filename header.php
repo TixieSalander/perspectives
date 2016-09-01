@@ -19,7 +19,7 @@ include_once __DIR__ . '/vendor/autoload.php';
 		the_post();
 
 		echo '<title>' . get_bloginfo('name') . ' | ' . get_the_title() . '</title>';
-		
+
 		rewind_posts();
 
 
@@ -96,8 +96,8 @@ include_once __DIR__ . '/vendor/autoload.php';
 		</button>
 	</div>
 	<div class="mobileMenu__content">
-		<form class="mobileSearch">
-			<input class="mobileSearch__input" type="search" placeholder="Rechercher..."/>
+		<form class="mobileSearch" action="<?= bloginfo('url') ?>/" method="GET">
+			<input class="mobileSearch__input" type="search" placeholder="Rechercher..." value="<?= the_search_query() ?>" name="s"/>
 			<button class="mobileSearch__button" role="button" type="submit">
 				<img src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
 			</button>
