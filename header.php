@@ -80,7 +80,7 @@ include_once __DIR__ . '/vendor/autoload.php';
 <!-- mobile header -->
 <div class="headerMobile">
 	<div class="container">
-		<a class="headerMobile__logo" href="" title="Accueil" rel="nofollow">
+		<a class="headerMobile__logo" href="<?= bloginfo('url') ?>" title="Accueil" rel="nofollow">
 			<img src="<?= bloginfo("template_directory") ?>/img/logo-mobile.svg" alt="Logo"/>
 		</a>
 		<button class="headerMobile__buttonMenu" data-js="mobileMenuButton">Menu</button>
