@@ -10,6 +10,9 @@ get_header();
 				<?php if (is_search()) : ?>
 					<span class="articleList__smallTitle">Résultat de : </span>
 					<span class="articleList__bigTitle"><?= the_search_query(); ?></span>
+				<?php elseif (is_category()) : ?>
+					<span class="articleList__smallTitle">Articles publiés dans : </span>
+					<span class="articleList__bigTitle"><?= single_cat_title(); ?></span>
 				<?php else: ?>
 					<span class="articleList__smallTitle">Articles du mois de : </span>
 					<span class="articleList__bigTitle"><?= ucfirst(get_the_date('F Y')); ?></span>
