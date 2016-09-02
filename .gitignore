@@ -7,8 +7,8 @@ node_modules/
 
 style.css
 /img/**
-!/img/cache/.htaccess
-!/img/cache/index.php
+!/img/.htaccess
+!/img/index.php
 js/
 /cache/
 
