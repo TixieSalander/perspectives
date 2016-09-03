@@ -42,6 +42,8 @@ include_once __DIR__ . '/vendor/autoload.php';
 
 	<?= wp_head() ?>
 
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,700" rel="stylesheet">
+
 </head>
 <body>
 
