@@ -34,4 +34,4 @@ Credits
 -------
 
 * [Higgcss](https://github.com/robinparisi/higgcss/) : A great minimalist CSS framework by Robin Parisi
-* [Instagram-PHP-API](http://cosenary.github.com/Instagram-PHP-API) : An easy-to-use PHP Class for accessing Instagram's API by Christian Metz
+* [Instagram-Grabber](https://github.com/Bolandish/Instagram-Grabber) : A workaround for the new Instagram policy to get images by hashtag and user id by Thomas Bolander
