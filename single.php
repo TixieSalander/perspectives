@@ -25,7 +25,7 @@ if (have_posts()) :
 						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
 					</div>
 					<div class="single-author__about">
-						<span class="single-author__name"><?= the_author_meta('nickname') ?></span>
+						<span class="single-author__name"><?= the_author_meta('display_name') ?></span>
 						<span class="single-author__bio"><?= the_author_meta('description') ?></span>
 						<?php
 						//						$url = get_the_author_meta('user_url');
