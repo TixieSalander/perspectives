@@ -2,10 +2,10 @@
 
 require '../vendor/autoload.php';
 
-use App\Cache\CacheFile;
 use App\Cache\CacheManager;
 use App\Cache\DataCache;
 use App\Cache\UrlCache;
+use Gregwar\Image\Image;
 
 function send404()
 {
@@ -44,6 +44,13 @@ function send200($abs_path, $tsstring, $type, $modifiedAt, $etag, $img_expire, $
 	exit;
 }
 
+function cropAndCompressImage($url)
+{
+	Image::open($url)
+		->zoomCrop(250, 250)
+		->save($url, 'guess', 55);
+}
+
 if (empty($_GET['id'])
 	|| !preg_match('/^[a-zA-Z0-9.]{23}\.[a-zA-Z]+$/', $_GET['id'])
 ) {
@@ -75,12 +82,16 @@ function response($cacheUrl, $cacheFilename)
 {
 	global $img_expire, $imgCache;
 
-	$imgCache->readOrCacheUrl($cacheFilename, $cacheUrl, $img_expire, CacheManager::$_no_delete);
+	$isFileValid = $imgCache->readOrCacheUrl($cacheFilename, $cacheUrl, $img_expire, CacheManager::$_no_delete | UrlCache::$_rtn_is_valid);
 
 	$cache_file = $imgCache->getFileCache($cacheFilename);
 
 	if (!$cache_file->isFileExist())
 		send404();
+
+	if (!$isFileValid)
+		cropAndCompressImage($cache_file->getAbsolutePath());
+
 	$modifiedAt = empty($cache_file->getModifiedAt()) ? new DateTime() : $cache_file->getModifiedAt();
 
 	$abs_path = $cache_file->getAbsolutePath();
