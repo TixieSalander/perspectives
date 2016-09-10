@@ -13,23 +13,17 @@ include_once __DIR__ . '/vendor/autoload.php';
 	<!--[if IE]>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 
-	<?php
-	if (is_single() && have_posts()) {
-
-		the_post();
-
-		echo '<title>' . get_bloginfo('name') . ' | ' . get_the_title() . '</title>';
-
-		rewind_posts();
-
-
-	} else {
-
-		echo '<title>' . get_bloginfo('name') . '</title>';
-
-	}
-
-	?>
+	<title>
+        <?php if(wp_title( '', false)) {
+			wp_title( '');
+ 			echo ' &#8226; ';
+			bloginfo( 'name');
+		} else {
+			bloginfo( 'name');
+			echo ' &#8226; ';
+			bloginfo( 'description');
+		}?>
+	</title>
 
 	<meta name="description" content="Description">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
