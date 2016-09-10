@@ -5,7 +5,7 @@
 // variables
 // --------------------------------------------------------------
 
-@home-margin       : 2rem;
+@home-margin: 2rem;
 
 /* ----------------------------------------------------------- */
 /* == Home page */
@@ -15,15 +15,15 @@
 -------------------------------------------------------------- */
 
 .home-module__grid-2-1 {
-  .unequalGrid(2, 1, @home-margin);
+	.unequalGrid(2, 1, @home-margin);
 }
 
 .home-module__grid-1-2 {
-  .unequalGrid(1, 2, @home-margin);
+	.unequalGrid(1, 2, @home-margin);
 }
 
 .home-module__grid-2 {
-  flex: 1;
+	flex: 1;
 
 	.grid(2, @home-margin);
 }
@@ -32,34 +32,34 @@
 -------------------------------------------------------------- */
 
 .home-module {
-  margin-bottom: @home-margin;
+	margin-bottom: @home-margin;
 }
 
 /* Main part module */
 
 .home-module__mainPart {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .home-module__mainPart > *:first-of-type {
-  margin-bottom: @home-margin;
+	margin-bottom: @home-margin;
 }
 
 .home-module__mainPart > div:nth-of-type(1) > *:nth-of-type(n) {
-  margin-bottom: -@home-margin;
+	margin-bottom: -@home-margin;
 }
 
 /* Side part module */
 
 .home-module__sidePart {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .home-module__sidePart > *:nth-of-type(1) {
-  margin-bottom: @home-margin;
+	margin-bottom: @home-margin;
 }
 
 /* Individual modules
@@ -68,29 +68,29 @@
 /* Big module */
 
 .home-moduleBig {
-  min-height: 36rem;
-  background-color: #fff;
+	min-height: 36rem;
+	background-color: #fff;
 }
 
 /* Medium module */
 
 .home-moduleMedium {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #fff;
 }
 
 /* High module */
 
 .home-moduleHigh {
-  min-height: ~"calc(55% - 10px)";
-  background-color: #fff;
+	min-height: ~"calc(55% - 10px)";
+	background-color: #fff;
 }
 
 /* Small module */
 
 .home-moduleSmall {
-  min-height: ~"calc(45% - 10px)";
-  background-color: #fff;
+	min-height: ~"calc(45% - 10px)";
+	background-color: #fff;
 }
