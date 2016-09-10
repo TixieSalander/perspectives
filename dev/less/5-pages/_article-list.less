@@ -1,0 +1,131 @@
+/* ----------------------------------------------------------- */
+/* == Article list */
+/* ----------------------------------------------------------- */
+
+/* Article head
+-------------------------------------------------------------- */
+
+.articleList__head {
+  padding: 4rem 0;
+  color: @color-light-text;
+  text-align: center;
+}
+
+.articleList__head hr {
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  max-width: 22rem;
+  width: 60%;
+  border: none;
+  border-bottom: .15rem solid rgba(255, 255, 255, .15);
+  background: none;
+}
+
+.articleList__smallTitle,
+.articleList__bigTitle {
+  vertical-align: middle;
+}
+
+.articleList__smallTitle {
+  margin-right: 2rem;
+  letter-spacing: 0.08em;
+  font-size: 2.4rem;
+}
+
+.articleList__bigTitle {
+  letter-spacing: 0.06em;
+  font-weight: bold;
+  font-size: 3.6rem;
+}
+
+/* Article list
+-------------------------------------------------------------- */
+
+.articleList__grid-list {
+  .grid(3);
+}
+
+/* Article author author */
+
+.articleList__author {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 3rem;
+  background: @color-quaternary url("/img/author-bg.jpg") no-repeat center;
+  background-size: cover;
+  color: @color-light-text;
+  text-align: center;
+  border-radius: .2rem;
+  overflow: hidden;
+}
+
+.articleList__authorNumber {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  letter-spacing: 0.06em;
+  font-size: 2.4rem;
+}
+
+.articleList__authorAvatar {
+  display: inline-block;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border-radius: 100%;
+  background-color: #efefef;
+}
+
+.articleList__authorAvatar img {
+  width: 10.5rem;
+  height: 10.5rem;
+}
+
+.articleList__authorName {
+  margin: 1rem;
+  text-shadow: 0 .2rem .2rem rgba(0,0,0,0.50);
+  letter-spacing: 0.06em;
+  font-weight: bold;
+  font-size: 2.2rem;
+}
+
+.articleList__authorAbout {
+  display: inline-block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  max-width: 36rem;
+  color: @color-light-text;
+  text-shadow: 0 .2rem .2rem rgba(0,0,0,0.50);
+  letter-spacing: 0.06em;
+  font-size: 1.5rem;
+  font-family: @fontstack2;
+  line-height: 2.2rem;
+}
+
+.articleList__authorLinks {
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+}
+
+.articleList__authorLinks li {
+  display: inline;
+  list-style-type: '—';
+}
+
+.articleList__authorLinks li:first-of-type {
+  list-style-type: none;
+}
+
+.articleList__authorLinks li:not(:first-of-type)::before {
+  content: "— ";
+}
+
+.articleList__authorLinks a {
+  color: @color-light-text;
+  text-decoration: none;
+}
+
+.articleList__authorLinks a:hover {
+  text-decoration: underline;
+}

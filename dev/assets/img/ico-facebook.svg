@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>ico-facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header" transform="translate(-1110.000000, -18.000000)" fill="#FFFFFF">
+            <g id="Top-nav">
+                <g>
+                    <g id="Social-icons" transform="translate(989.000000, 18.000000)">
+                        <path d="M122.125313,0 C121.779844,0 121.5,0.27984375 121.5,0.62484375 L121.5,14.3751563 C121.5,14.7201563 121.779844,15 122.125313,15 L129.46875,15 L129.46875,9.375 L127.59375,9.375 L127.59375,7.03125 L129.46875,7.03125 L129.46875,5.15625 C129.46875,3.21890625 130.695469,2.26546875 132.42375,2.26546875 C133.251563,2.26546875 133.963125,2.32734375 134.170312,2.35453125 L134.170312,4.37953125 L132.971719,4.38 C132.031875,4.38 131.8125,4.82671875 131.8125,5.48203125 L131.8125,7.03125 L134.15625,7.03125 L133.6875,9.375 L131.8125,9.375 L131.85,15 L135.875156,15 C136.220156,15 136.5,14.7201563 136.5,14.3751563 L136.5,0.62484375 C136.5,0.27984375 136.220156,0 135.875156,0 L122.125313,0 Z" id="ico-facebook"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,45 @@
+/* ----------------------------------------------------------- */
+/* == header */
+/* ----------------------------------------------------------- */
+
+.header {
+	text-align: center;
+}
+
+.header ul,
+.header li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Logo
+-------------------------------------------------------------- */
+
+.header__logo {
+	display: block;
+	margin: 3rem auto;
+	max-width: 20rem;
+	cursor: pointer;
+}
+
+/* Category navigation
+-------------------------------------------------------------- */
+
+.catNav__item {
+	display: inline;
+}
+
+a.catNav__link {
+	display: inline-block;
+	padding: 1.5rem 2.7rem;
+	color: @color-light-text;
+	text-decoration: none;
+	font-size: 1.8rem;
+	letter-spacing: 0.06em;
+}
+
+a.catNav__link:hover,
+a.catNav__link:active
+a.catNav__link--active {
+	background-color: @color-secondary;
+}

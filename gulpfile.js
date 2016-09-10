@@ -8,30 +8,18 @@ var reload					= browserSync.reload;
 
 var paths = {
 	less: {
-		src: 'less/style.less',
-		dest: 'wp-content/themes/perspectives/',
-		watch: 'less/**'
+		src: 'dev/less/style.less',
+		dest: './',
+		watch: 'dev/less/**'
 	},
 	html: {
-		watch: 'wp-content/themes/perspectives/**/*.html',
+		watch: '*.html',
 	},
 	imgs: {
-		watch: 'assets/img/*.*',
+		watch: 'dev/assets/img/*.*',
 	},
 	copyjs: {
-		watch: 'assets/js/**/*.*',
-	},
-	csscomb : {
-		src: [
-			'less/**',
-			'!less/1.base/_00-mixins.less',
-			'!less/1.base/_05-spacing.less',
-			'!less/1.base/_07-width.less',
-			'!less/1.base/_08-grid.less',
-			'!less/2.structure/_02-icons.less',
-			'!less/5.vendors/**'
-		],
-		dest: 'less/'
+		watch: 'dev/assets/js/**/*.*',
 	}
 };
 
@@ -46,27 +34,21 @@ gulp.task('less', function () {
 		.pipe(reload({stream:true}));
 });
 
-gulp.task('csscomb', function () {
-	gulp.src(paths.csscomb.src)
-		.pipe(csscomb())
-		.pipe(gulp.dest(paths.csscomb.dest));
-});
-
 gulp.task('imagemin', () =>
-    gulp.src('assets/img/*')
+    gulp.src('dev/assets/img/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('wp-content/themes/perspectives/img'))
+        .pipe(gulp.dest('img'))
 );
 
 gulp.task('copyjs', () =>
-	gulp.src('assets/js/**/*')
-		.pipe(gulp.dest('wp-content/themes/perspectives/js'))
+	gulp.src('dev/assets/js/**/*')
+		.pipe(gulp.dest('js'))
 );
 
 gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
-			baseDir: "wp-content/themes/perspectives",
+			baseDir: "./",
 			directory: true
 		}
 	});
@@ -85,4 +67,4 @@ gulp.task('watch', ['browser-sync'], function () {
 	gulp.watch(paths.copyjs.watch, ['copyjs']);
 });
 
-gulp.task('default', ['less']);
+gulp.task('default', ['less', 'imagemin', 'copyjs']);

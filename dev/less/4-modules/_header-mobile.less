@@ -1,0 +1,44 @@
+/* ----------------------------------------------------------- */
+/* == Header mobile */
+/* ----------------------------------------------------------- */
+
+.headerMobile {
+  position: fixed;
+  top: 0;
+  display: none;
+  padding: .8rem 0;
+  width: 100%;
+  border-bottom: .1rem solid @color-border-gray;
+  background-color: @color-primary;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  z-index: 2;
+}
+
+.headerMobile .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerMobile__logo {
+  display: block;
+  height: 4rem;
+}
+
+.headerMobile__logo img {
+  height: 100%;
+}
+
+.headerMobile__buttonMenu {
+  padding: .3rem 1.3rem;
+  border: 0.1rem solid @color-tertiary;
+  border-radius: .2rem;
+  background: none;
+  color: @color-tertiary;
+}
+
+.headerMobile__buttonMenu:active {
+  color: @color-light-text;
+  background-color: @color-tertiary;
+}

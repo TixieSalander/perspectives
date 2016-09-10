@@ -5,15 +5,18 @@
 .bash_history
 node_modules/
 
-public/style.less
-public/img/
-public/js/
+style.css
+/img/**
+!/img/.htaccess
+!/img/index.php
+js/
+/cache/
 
 # OS
 .DS_Store
 ._*
 Thumbs.db
-.cache
+*.cache
 .project
 .settings
 .tmproj
@@ -24,3 +27,5 @@ nbproject
 .idea
 *.swp
 *~
+
+/vendor/

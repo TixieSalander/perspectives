@@ -1,0 +1,284 @@
+/* ----------------------------------------------------------- */
+/* == Configuration */
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+/* == Postformat box */
+/* ----------------------------------------------------------- */
+
+/* Post format Article
+-------------------------------------------------------------- */
+
+.fpostArticle {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: @radiuscorner;
+  color: @color-dark-text;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fpostArticle__image {
+  flex: 1;
+  overflow: hidden;
+  max-height: 360rem;
+  background: @color-secondary center no-repeat;
+  background-size: cover;
+}
+
+.fpostArticle__image img {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 80rem;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.fpostArticle__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 2rem 3rem;
+  background: #fff;
+}
+
+.fpostArticle__image {
+  flex: 1;
+  min-height: 15rem;
+}
+
+.fpostArticle__title {
+  margin: 0;
+  color: @color-dark-text;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.fpostArticle__cat {
+  margin-top: 2rem;
+  color: @color-tertiary;
+  font-size: 1.6rem;
+}
+
+.fpostArticle__cat svg {
+  margin-right: 1rem;
+}
+
+.fpostArticle__cat svg path {
+  fill: @color-tertiary;
+}
+
+/* Big module */
+
+.home-moduleBig.fpostArticle {
+  flex-direction: row;
+}
+
+.home-moduleBig .fpostArticle__content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  width: ~"calc(50% + 1rem)";
+  background-color: @color-tertiary;
+}
+
+.home-moduleBig .fpostArticle__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  color: @color-light-text;
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+
+.home-moduleBig .fpostArticle__cat {
+  color: @color-light-text;
+}
+
+.home-moduleBig .fpostArticle__cat svg path {
+  fill: @color-light-text;
+}
+
+/* High module */
+
+.home-moduleHigh .fpostArticle__image {
+  //min-height: 24rem;
+}
+
+/* Small module */
+
+.home-moduleSmall .fpostArticle__image {
+  flex: 1;
+}
+
+.home-moduleSmall .fpostArticle__content {
+  padding: 2rem 2rem 3rem;
+}
+
+.home-moduleSmall .fpostArticle__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+
+.home-moduleSmall .fpostArticle__cat {
+  margin-top: 1.5rem;
+}
+
+/* Postformat Dossier
+-------------------------------------------------------------- */
+
+.fpostDossier {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 3rem;
+  border-radius: @radiuscorner;
+  background: #fff;
+  color: @color-dark-text;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.fpostDossier__title {
+  margin: 0;
+  color: @color-dark-text;
+  font-weight: bold;
+  font-size: 2.8rem;
+  line-height: 3.8rem;
+}
+
+.fpostDossier__extract {
+  margin-top: 1rem;
+  color: @color-gray-text;
+  font-size: 1.5rem;
+  font-family: @fontstack2;
+  line-height: 2.5rem;
+}
+
+.fpostDossier__cat {
+  color: @color-tertiary;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.fpostDossier__cat svg {
+  margin-right: 1rem;
+}
+
+.fpostDossier__cat svg path {
+  fill: @color-tertiary;
+}
+
+/* Big module */
+
+.home-moduleBig .fpostDossier__title {
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+
+.home-moduleBig .fpostDossier__extract {
+  font-size: 2.4rem;
+  line-height: 3.4rem;
+}
+
+.home-moduleBig .fpostDossier__cat {
+  text-align: right;
+}
+
+/* High module */
+
+.home-moduleHigh .fpostDossier__title {
+  font-size: 3rem;
+}
+
+.home-moduleHigh .fpostDossier__extract {
+  font-size: 1.6rem;
+}
+
+/* Small module */
+
+.home-moduleSmall .fpostDossier__title {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+
+/* Postformat video
+-------------------------------------------------------------- */
+
+.fpostVideo {
+  display: flex;
+  overflow: hidden;
+  border-radius: @radiuscorner;
+  background: #fff;
+  background: no-repeat center;
+  background-size: cover;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fpostVideo__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 3rem;
+  width: 100%;
+  background-color: @result;
+
+  .rgbaColorIn(@color-tertiary, 60%);
+}
+
+.fpostVideo__title {
+  margin: 0;
+  color: @color-light-text;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+.fpostVideo__play {
+  padding: .5rem;
+}
+
+.fpostVideo__play svg {
+  width: 7rem;
+}
+
+.fpostVideo__cat {
+  margin-top: 2rem;
+  color: @color-light-text;
+  font-size: 1.6rem;
+}
+
+.fpostVideo__cat svg {
+  margin-right: 1rem;
+}
+
+.fpostVideo__cat svg path {
+  fill: @color-light-text;
+}
+
+.fpostVideo:hover .fpostVideo__playTriangle {
+  fill: #fff;
+}
+
+/* Big module */
+
+.home-moduleBig .fpostVideo__title {
+  font-size: 3.9rem;
+  line-height: 5rem;
+}
+
+/* Small module */
+
+.home-moduleSmall .fpostVideo__title {
+  font-size: 2.6rem;
+  line-height: 3.5rem;
+}
