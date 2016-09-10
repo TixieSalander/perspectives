@@ -20,7 +20,7 @@ if (have_posts()) :
 					<img class="single-head__image" src="<?= get_the_post_thumbnail_url() ?>"/>
 				</div>
 				<div class="single-author">
-					<span class="single-author__title">L'auteur-e</span>
+					<span class="single-author__title">L'auteur·e</span>
 					<div class="single-author__avatar">
 						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
 					</div>
