@@ -107,6 +107,7 @@ if (empty($imgCacheRef_content)) {
 		<?php endforeach; ?>
 
 	</ul>
+	<div class="instaGallery__about"><p>Ces photos sont issues de notre compte Instagram, n'hésitez pas à y jeter un petit coup d'oeil ;)</p></div>
 	<!-- Footer bottom -->
 	<div class="container">
 		<div class="footer__bottom grid-2">
