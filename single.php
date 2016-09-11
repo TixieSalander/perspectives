@@ -71,24 +71,13 @@ if (have_posts()) :
 
 				<?php
 
-				$tags = get_the_tags();
-				$tag_list_str = [];
 
-				if (!is_array($tags))
-					$tags = [];
-
-				foreach ($tags as $tag) {
-					$tag_list_str[] = $tag->name;
-				}
-
-				$tag_list_str = join(',', $tag_list_str);
 				$permalink = urlencode(get_the_permalink());
 
 				$twitter = Utils::getShareLink('twitter', [
 					'{url}'      => $permalink,
 					'{title}'    => get_the_title(),
 					'{via}'      => pathinfo(get_option('rs_twitter', ''), PATHINFO_BASENAME),
-					'{hashtags}' => $tag_list_str,
 				]);
 
 				$facebook = Utils::getShareLink('facebook', [

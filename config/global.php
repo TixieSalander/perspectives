@@ -39,7 +39,7 @@ return [
 	],
 
 	'socials_sharer_links' => [
-		'twitter'   => 'https://twitter.com/intent/tweet?url={url}&text={title}&via={via}&hashtags={hashtags}',
+		'twitter'   => 'https://twitter.com/intent/tweet?url={url}&text={title}&via={via}',
 		'facebook'  => 'https://www.facebook.com/sharer/sharer.php?u={url}',
 		'google+'   => 'https://plus.google.com/share?url={url}',
 		'pinterest' => 'https://pinterest.com/pin/create/bookmarklet/?media={img}&url={url}&is_video={is_video}&description={title}',
