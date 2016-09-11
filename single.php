@@ -9,15 +9,15 @@ $cardFactory = PostTypesCardFactory::getInstance();
 
 if (have_posts()) :
 	the_post();
-	
+
 	?>
-	
+
 	<!-- Single article -->
 	<div class="container">
 		<section class="single">
 			<div class="single-content">
 				<div class="single-head">
-					<img class="single-head__image" src="<?= get_the_post_thumbnail_url() ?>"/>
+					<?= the_post_thumbnail( 'large', array( 'class' => 'single-head__image') ) ?>
 				</div>
 				<div class="single-author">
 					<span class="single-author__title">L'auteur·e</span>
@@ -43,29 +43,29 @@ if (have_posts()) :
 						<div class="single-article__info">
 							<?php
 							$cats = get_the_category();
-							
+
 							$cat_html = [];
-							
+
 							foreach ($cats as $cat) {
-								
+
 								$cat_link = get_category_link($cat->cat_ID);
 								$cat_name = $cat->cat_name;
-								
+
 								$cat_html[] = "<a href=\"$cat_link\">$cat_name</a>";
 							}
-							
+
 							?>
 							Publié <?php echo empty($cat_html) ? 'le ' . get_the_date() : implode(', ', $cat_html) . ' • Le ' . get_the_date(); ?>
 						</div>
 					</div>
 					<div class="single-article__content">
-						
+
 						<?php the_content(); ?>
-					
+
 					</div>
-				
+
 				</div>
-				
+
 				<?php
 
 				$tags = get_the_tags();
@@ -104,7 +104,7 @@ if (have_posts()) :
 				]);
 
 				?>
-				
+
 				<ul class="single-share">
 					<li class="single-share__item">
 						<a class="single-share__link single-share__link--twitter" href="<?= $twitter ?>" target="_blank" title="Share on twitter">
@@ -128,10 +128,10 @@ if (have_posts()) :
 					</li>
 				</ul>
 			</div>
-			
+
 			<!-- Article suggestions -->
 			<?= $cardFactory->getRelated(); ?>
-		
+
 		</section>
 	</div>
 <?php endif; ?>
