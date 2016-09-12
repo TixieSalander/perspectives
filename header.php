@@ -14,15 +14,15 @@ include_once __DIR__ . '/vendor/autoload.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 
 	<title>
-        <?php if(wp_title( '', false)) {
-			wp_title( '');
- 			echo ' &#8226; ';
-			bloginfo( 'name');
-		} else {
-			bloginfo( 'name');
+		<?php if (wp_title('', false)) {
+			wp_title('');
 			echo ' &#8226; ';
-			bloginfo( 'description');
-		}?>
+			bloginfo('name');
+		} else {
+			bloginfo('name');
+			echo ' &#8226; ';
+			bloginfo('description');
+		} ?>
 	</title>
 
 	<meta name="description" content="Description">
@@ -46,10 +46,13 @@ include_once __DIR__ . '/vendor/autoload.php';
 	<div class="container">
 
 		<nav class="topNav">
-			<?= Utils::getWPMenu('top-bar-menu', false, false, 'topNav__item'); ?>
+			<?= Utils::getWPMenu('top-bar-menu', false, false, ["class" => "topNav__item"]); ?>
 		</nav>
 
-		<?= Utils::getSocials([], 'topSocial', 'topSocial__item'); ?>
+		<?= Utils::getSocials([],
+			"topSocial",
+			"topSocial__item",
+			 ["rel"   => "nofollow"]); ?>
 
 		<button class="topSearch" data-js="topSearchButton"><img class="topSearch__icon"
 		                                                         src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
@@ -67,7 +70,10 @@ include_once __DIR__ . '/vendor/autoload.php';
 		</a>
 
 
-		<?= Utils::getWPMenu('main-menu', 'catNav', 'catNav__item', 'catNav__link'); ?>
+		<?= Utils::getWPMenu('main-menu',
+			["class" => "catNav"],
+			["class" => "catNav__item"],
+			["class" => "catNav__link"]); ?>
 
 	</div>
 </header>
@@ -99,14 +105,24 @@ include_once __DIR__ . '/vendor/autoload.php';
 			</button>
 		</form>
 
-		<?= Utils::getWPMenu('main-menu', 'mobileCat', '', 'mobileCat__link'); ?>
+		<?= Utils::getWPMenu('main-menu',
+			["class" => "mobileCat"],
+			[],
+			["class" => "mobileCat__link",
+			 "rel"   => "nofollow"]); ?>
 
-		<?= Utils::getWPMenu('top-bar-menu', 'mobileNav', 'mobileNav__item', 'mobileNav__link'); ?>
-
+		<?= Utils::getWPMenu('top-bar-menu',
+			["class" => "mobileNav"],
+			["class" => "mobileNav__item"],
+			["class" => "mobileNav__link",
+			 "rel"   => "nofollow"]); ?>
+	
 	</div>
 	<div class="mobileMenu__footer mobileSocial">
 
-		<?= Utils::getSocials([], false, false, 'mobileSocial__item'); ?>
-
+		<?= Utils::getSocials([], false, false,
+			["class" => "mobileSocial__item",
+			 "rel"   => "nofollow"]); ?>
+	
 	</div>
 </div>
