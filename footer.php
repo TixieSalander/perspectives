@@ -124,7 +124,7 @@ if (empty($imgCacheRef_content)) {
 						<li class="footerSocial">
 							Restez en contact<br/>
 
-							<?= Utils::getSocials([], false, false, 'footerSocial__item'); ?>
+							<?= Utils::getSocials([], false, false, ["class" => "footerSocial__item"]); ?>
 
 						</li>
 
