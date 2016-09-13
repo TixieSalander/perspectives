@@ -19,14 +19,26 @@ class Utils
 		
 		$menu_items = wp_get_nav_menu_items($menu_id);
 		$links = [];
-		
+
 		foreach ($menu_items as $item) {
 			
 			$html = $item->title;
-			
-			$props = join(' ', self::getOptions(array_merge([
+			$item_options = [
 				"href" => $item->url,
-			], $a_options)));
+			];
+			$new_options = $a_options;
+
+			if(is_category($item->object_id)) {
+
+				if(empty($new_options['class'])) {
+					$new_options['class'] = "catNav__link--active";
+				}else {
+					$new_options['class'] .= " catNav__link--active";
+				}
+
+			}
+			
+			$props = join(' ', self::getOptions(array_merge($item_options, $new_options)));
 			
 			$links[] = "<a $props>$html</a>";
 			
