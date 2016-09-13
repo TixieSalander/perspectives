@@ -24,7 +24,7 @@
 	}
 
 	& > *:nth-child(n) {
-		width: ~'calc(100% * 1 / @{number} - @{gutter})';
+		width: ~'calc(100% * 1 / @{number} - @{gutter} - 0.01px)';
 		margin-left: @gutter;
 		margin-bottom: @gutter
 	}
@@ -49,12 +49,12 @@
 
 	& > :nth-child(odd) {
 		@size : (@column1 * 100%) / (@column1 + @column2);
-		width: ~'calc(@{size} - @{g})';
+		width: ~'calc(@{size} - @{g} - 0.01px)';
 	}
 
 	& > :nth-child(even) {
 		@size : (@column2 * 100%) / (@column1 + @column2);
-		width: ~'calc(@{size} - @{g} )';
+		width: ~'calc(@{size} - @{g} - 0.01px)';
 		margin-left: @gutter;
 	}
 }
