@@ -313,7 +313,7 @@ class PostTypesCardFactory
 		$this->last_post = [
 			'title'       => get_the_title(),
 			'permalink'   => get_the_permalink(),
-			'thumbnail'   => get_the_post_thumbnail_url(null, 'medium'),
+			'thumbnail'   => get_the_post_thumbnail_url(null, 'large'),
 			'format_name' => get_post_format(),
 			'categories'  => $categories,
 			'excerpt'     => get_the_excerpt(),
