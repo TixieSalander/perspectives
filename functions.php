@@ -1,5 +1,7 @@
 <?php
 
+use Eliepse\Config\ConfigFactory;
+
 require_once 'vendor/autoload.php';
 
 function register_menus()
@@ -83,7 +85,7 @@ function my_img_caption_shortcode($empty, $attr, $content)
 function add_settings()
 {
 
-	$global_config = \App\ConfigFactory::getConfig('global');
+	$global_config = ConfigFactory::getConfig('global');
 
 
 	add_settings_section('rs_settings', 'Réseaux Sociaux', function () {

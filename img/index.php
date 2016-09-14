@@ -2,9 +2,9 @@
 
 require '../vendor/autoload.php';
 
-use App\Cache\CacheManager;
 use App\Cache\DataCache;
 use App\Cache\UrlCache;
+use Eliepse\Cache\Cache;
 use Gregwar\Image\Image;
 
 function send404()
@@ -62,7 +62,7 @@ $img_expire = 86400 * 7;
 $dataCache = new DataCache();
 $imgCache = new UrlCache('img/cache/');
 
-$imgCacheRef_content = $dataCache->read("img-cache", false, CacheManager::$_no_delete);
+$imgCacheRef_content = $dataCache->read("img-cache", false, Cache::$_no_delete);
 $imgCacheRefs = json_decode($imgCacheRef_content, true);
 
 foreach ($imgCacheRefs as $id => $url) {
@@ -82,7 +82,7 @@ function response($cacheUrl, $cacheFilename)
 {
 	global $img_expire, $imgCache;
 
-	$isFileValid = $imgCache->readOrCacheUrl($cacheFilename, $cacheUrl, $img_expire, CacheManager::$_no_delete | UrlCache::$_rtn_is_valid);
+	$isFileValid = $imgCache->readOrCacheUrl($cacheFilename, $cacheUrl, $img_expire, Cache::$_no_delete | UrlCache::$_rtn_is_valid);
 
 	$cache_file = $imgCache->getFileCache($cacheFilename);
 

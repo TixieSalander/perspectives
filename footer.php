@@ -1,10 +1,10 @@
 <?php
 
-use App\Cache\CacheManager;
 use App\Cache\DataCache;
 use App\Cache\UrlCache;
 use App\Utils;
 use Bolandish\Instagram;
+use Eliepse\Cache\Cache;
 
 
 $dataCache = new DataCache();
@@ -37,7 +37,7 @@ $imgCacheRef_content = $dataCache->readOrWrite("img-cache", function ($data) use
 
 
 	if (empty($data))
-		return CacheManager::$_no_write | CacheManager::$_force_read;
+		return Cache::$_no_write | Cache::$_force_read;
 
 	$cache = json_decode($data, true);
 
@@ -54,7 +54,7 @@ $imgCacheRef_content = $dataCache->readOrWrite("img-cache", function ($data) use
 
 	return $toWrite;
 
-}, 86400 * 2, CacheManager::$_no_delete);
+}, 86400 * 2, Cache::$_no_delete);
 
 $newImgCacheRefs = [];
 
