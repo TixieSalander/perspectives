@@ -5,6 +5,7 @@ use App\Cache\UrlCache;
 use App\Utils;
 use Bolandish\Instagram;
 use Eliepse\Cache\Cache;
+use Eliepse\Cache\CacheFile;
 
 
 $dataCache = new DataCache();
@@ -33,8 +34,9 @@ $data = $dataCache->readOrWrite('instagram', function () {
 
 $data = json_decode($data, true);
 
-$imgCacheRef_content = $dataCache->readOrWrite("img-cache", function ($data) use ($imgCache, $img_expire) {
+$imgCacheRef_content = $dataCache->readOrWrite("img-cache", function (CacheFile $filecache) use ($imgCache, $img_expire) {
 
+	$data = $filecache->getData();
 
 	if (empty($data))
 		return Cache::$_no_write | Cache::$_force_read;
