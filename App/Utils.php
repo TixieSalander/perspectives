@@ -4,6 +4,8 @@
 namespace App;
 
 
+use Eliepse\Config\ConfigFactory;
+
 class Utils
 {
 	
