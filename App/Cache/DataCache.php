@@ -3,7 +3,9 @@
 
 namespace App\Cache;
 
-class DataCache extends CacheManager
+use Eliepse\Cache\Cache;
+
+class DataCache extends Cache
 {
 
 	public function initConfigs($url = false)

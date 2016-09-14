@@ -3,7 +3,9 @@
 
 namespace App\Cache;
 
-class UrlCache extends CacheManager
+use Eliepse\Cache\Cache;
+
+class UrlCache extends Cache
 {
 
 	static public $_rtn_is_valid = 0x20;
