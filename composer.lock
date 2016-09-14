@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "63e94ec5cb8bce5a77839acfd3b0afff",
-    "content-hash": "53cc1580eaa278db1580bbe905827fc8",
+    "hash": "8c8ea2ea06516dd43d842b321be2224b",
+    "content-hash": "c342a898adbebe5520544585b531e6d5",
     "packages": [
         {
             "name": "bolandish/instagram-grabber",
@@ -36,6 +36,81 @@
             ],
             "description": "A workaround for the new Instagram policy to get images by hashtag and user id. No need for accesstoken",
             "time": "2016-06-14 08:37:10"
+        },
+        {
+            "name": "eliepse/basic-cache",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eliepse/Basic-Cache.git",
+                "reference": "1f5ed0e6404224fc1f93b62051d87a3b7777c7b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eliepse/Basic-Cache/zipball/1f5ed0e6404224fc1f93b62051d87a3b7777c7b0",
+                "reference": "1f5ed0e6404224fc1f93b62051d87a3b7777c7b0",
+                "shasum": ""
+            },
+            "require": {
+                "eliepse/config-manager": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eliepse\\Cache\\": "App/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elie Meignan",
+                    "email": "contact@eliepse.fr"
+                }
+            ],
+            "description": "A very simple cache system",
+            "support": {
+                "source": "https://github.com/Eliepse/Basic-Cache/tree/0.2.1",
+                "issues": "https://github.com/Eliepse/Basic-Cache/issues"
+            },
+            "time": "2016-09-14 14:01:04"
+        },
+        {
+            "name": "eliepse/config-manager",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Eliepse/Config-Manager.git",
+                "reference": "de46b44b03f432bf40671e4fdcc58c091b545581"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Eliepse/Config-Manager/zipball/de46b44b03f432bf40671e4fdcc58c091b545581",
+                "reference": "de46b44b03f432bf40671e4fdcc58c091b545581",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eliepse\\Config\\": "App/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elie Meignan",
+                    "email": "contact@eliepse.fr"
+                }
+            ],
+            "description": "A Simple config manager in PHP",
+            "support": {
+                "source": "https://github.com/Eliepse/Config-Manager/tree/0.1.3",
+                "issues": "https://github.com/Eliepse/Config-Manager/issues"
+            },
+            "time": "2016-09-14 09:02:34"
         },
         {
             "name": "gregwar/cache",
