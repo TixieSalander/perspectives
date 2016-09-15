@@ -8,16 +8,8 @@ use Eliepse\Cache\Cache;
 class UrlCache extends Cache
 {
 
+	protected $type = 'url';
 	static public $_rtn_is_valid = 0x20;
-
-	public function initConfigs($url = false)
-	{
-		parent::initConfigs();
-
-		if ($url === false && isset($this->cache_config->paths['url']))
-			$this->cache_path = $this->path_base . $this->cache_config->paths['url'];
-	}
-
 
 	public function readOrCacheUrl($name, $url, $expire = null, $flags = null)
 	{
