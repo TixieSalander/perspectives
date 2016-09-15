@@ -8,8 +8,7 @@ return [
 	 *
 	 * */
 
-//	'mode' => 'production',
-	'mode' => 'no_expire',
+	'mode' => 'production',
 
 
 	/*
@@ -20,8 +19,6 @@ return [
 
 	'paths' => [
 		'default' => 'cache/',
-//		'data'    => 'cache/',
-//		'file'    => 'cache/',
 		'url'     => 'cache/img/',
 	],
 
@@ -32,10 +29,10 @@ return [
 	 * */
 
 	'cache_extension' => '',
-//	'cache_extension' => 'cache',
 
 	'default_expired_time' => 3600,
 
+	'default_chmod' => 0700,
 
 	/*
 	 * Next features ?
