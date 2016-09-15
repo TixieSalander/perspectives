@@ -264,7 +264,28 @@ img.single-head__image {
 	font-size: 1.75em;
 }
 
+/* Post quote */
 
+.single-article__content blockquote {
+	margin: 2.5rem 10%;
+	padding: 2.5rem 3rem;
+	background: #e2f7ff;
+	color: fade(@color-gray-text, 70%);
+	font-style: italic;
+	font-size: 1.8rem;
+}
+
+.single-article__content blockquote p,
+.single-article__content p blockquote {
+	margin: 0;
+	color: fade(@color-gray-text, 70%);
+}
+
+.single-article__content blockquote p:not(:last-of-type) {
+	margin-bottom: 2rem;
+}
+
+/* Post lists */
 
 .single-article__content ul li {
 	list-style-type: disc;
