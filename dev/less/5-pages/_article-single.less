@@ -272,7 +272,8 @@ img.single-head__image {
 
 /* Post quote */
 
-.single-article__content blockquote {
+.single-article__content blockquote,
+.single-article__content blockquote.twitter-tweet {
 	margin: 2.5rem 10%;
 	padding: 2.5rem 3rem;
 	background: #e2f7ff;
@@ -318,6 +319,11 @@ img.single-head__image {
 	max-width: none;
 	width: 90%;
 	border: 0;
+}
+
+.single-article__content .twitter-tweet {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .single-article__content p iframe {
