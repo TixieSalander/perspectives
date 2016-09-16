@@ -1,0 +1,32 @@
+{
+  "manifest_version": 1,
+  "name": "Perspectives",
+  "short_name": "Perspectives",
+  "start_url": "https://perspectives.design",
+  "background_color": "#352639",
+  "theme_color": "#352639",
+  "display": "standalone",
+  "orientation": "portrait",
+  "browser_action": {
+    "default_title": "Perspectives"
+  },
+  "default_locale": "fr",
+
+  "icons": [
+    {
+      "src": "img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/favicon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "img/favicon.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ]
+}
