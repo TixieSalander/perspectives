@@ -32,6 +32,12 @@ include_once __DIR__ . '/vendor/autoload.php';
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+	<meta name="application-name" content="Perspectives" />
+	<meta name="msapplication-TileColor" content="#352639">
+	<meta name="msapplication-TileImage" content="<?= bloginfo("template_directory") ?>/img/favicon.png">
+	<meta name="theme-color" content="#352639">
+	<link rel="manifest" href="<?= bloginfo("template_directory") ?>/manifest.json">
+
 	<link rel="stylesheet" href="<?= bloginfo('stylesheet_url') ?>" media="all">
 
 	<?= wp_head() ?>
@@ -116,13 +122,13 @@ include_once __DIR__ . '/vendor/autoload.php';
 			["class" => "mobileNav__item"],
 			["class" => "mobileNav__link",
 			 "rel"   => "nofollow"]); ?>
-	
+
 	</div>
 	<div class="mobileMenu__footer mobileSocial">
 
 		<?= Utils::getSocials([], false, false,
 			["class" => "mobileSocial__item",
 			 "rel"   => "nofollow"]); ?>
-	
+
 	</div>
 </div>
