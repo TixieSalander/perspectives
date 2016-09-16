@@ -191,9 +191,10 @@ img.single-head__image {
 	margin-bottom: 3rem;
 }
 
-.single-article__content p,
-.single-article__content ul,
-.single-article__content ol {
+.single-article__content > p,
+.single-article__content > div,
+.single-article__content > ul,
+.single-article__content > ol {
 	margin: 0 10%;
 	margin-bottom: 3rem;
 	color: @color-dark-text;
@@ -201,6 +202,11 @@ img.single-head__image {
 	font-size: 1.8rem;
 	font-family: @fontstack2;
 	line-height: 1.6em;
+}
+
+.single-article__content > ul {
+	margin: 0 12%;
+	margin-bottom: 3rem;
 }
 
 .single-article__content li {
