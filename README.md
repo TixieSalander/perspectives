@@ -34,5 +34,4 @@ Credits
 -------
 
 * [Higgcss](https://github.com/robinparisi/higgcss/) : A great minimalist CSS framework by Robin Parisi
-* [Instagram-Grabber](https://github.com/Bolandish/Instagram-Grabber) : A workaround for the new Instagram policy to get images by hashtag and user id by Thomas Bolander
 * [Gregwar's Image class](https://github.com/Gregwar/Image) : The Gregwar\Image class purpose is to provide a simple object-oriented images handling and caching API by Grégoire Passault

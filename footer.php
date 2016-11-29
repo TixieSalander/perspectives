@@ -3,7 +3,6 @@
 use App\Cache\DataCache;
 use App\Cache\UrlCache;
 use App\Utils;
-use Bolandish\Instagram;
 use Eliepse\Cache\Cache;
 use Eliepse\Cache\CacheFile;
 
@@ -15,13 +14,13 @@ $imgCache = new UrlCache('img/cache/');
 $img_expire = 86400 * 7;
 $isImgCacheRefModified = false;
 
-
 $data = $dataCache->readOrWrite('instagram', function () {
 
 	$data = null;
 
 	try {
-		$data = Instagram::getMediaByUserID('3166050484', 10, true);
+		$data = file_get_contents("https://www.instagram.com/designdiverfr/media");
+		$data = json_decode($data, true);
 	} catch (Exception $e) {
 	}
 
@@ -33,6 +32,7 @@ $data = $dataCache->readOrWrite('instagram', function () {
 }, 1800, $urlCache::$_no_delete);
 
 $data = json_decode($data, true);
+$data = $data['items'];
 
 $imgCacheRef_content = $dataCache->readOrWrite("img-cache", function (CacheFile $filecache) use ($imgCache, $img_expire) {
 
@@ -47,7 +47,7 @@ $imgCacheRef_content = $dataCache->readOrWrite("img-cache", function (CacheFile 
 
 		if ($imgCache->isCacheEntryExpired($id, $img_expire)) {
 			$imgCache->remove($id);
-			unset($cache[ $id ]);
+			unset($cache[$id]);
 		}
 
 	}
@@ -77,7 +77,13 @@ if (empty($imgCacheRef_content)) {
 		<?php foreach ($data as $insta) :
 
 			$thumb_id = null;
-			$url = $insta['thumbnail_src'];
+//			$url = $insta['thumbnail_src'];
+//			echo "<pre>";
+//			print_r($insta);
+//			echo "</pre>";
+			$url = $insta["images"]["standard_resolution"]["url"];
+			$caption = $insta["caption"]["text"];
+			$caption = $url;
 
 			foreach ($imgCacheRef as $cache_id => $cahce_url) {
 
@@ -92,17 +98,17 @@ if (empty($imgCacheRef_content)) {
 
 				$isImgCacheRefModified = true;
 
-				$newImgCacheRefs[ $thumb_id ] = $url;
+				$newImgCacheRefs[$thumb_id] = $url;
 			}
 
 			?>
 
 			<li class="instaGallery__item">
 				<a class="instaGallery__link" target="_blank" href="https://www.instagram.com/p/<?= $insta['code'] ?>"
-				   title="<?= $insta['caption'] ?>">
+				   title="<?= $caption ?>">
 					<img class="instaGallery__image"
 					     src="<?= $theme_path . '/img/' . $thumb_id ?>"
-					     alt="<?= $insta['caption'] ?>"/>
+					     alt="<?= $caption ?>"/>
 				</a>
 			</li>
 

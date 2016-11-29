@@ -11,7 +11,6 @@
 		}
 	],
 	"require": {
-		"bolandish/instagram-grabber": "^1.0",
 		"gregwar/image": "^2.0",
 		"eliepse/basic-cache": ">=0.1.0",
 		"eliepse/config-manager": ">=0.1.0"
