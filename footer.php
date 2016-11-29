@@ -19,7 +19,7 @@ $data = $dataCache->readOrWrite('instagram', function () {
 	$data = null;
 
 	try {
-		$data = file_get_contents("https://www.instagram.com/designdiverfr/media");
+		$data = file_get_contents("https://www.instagram.com/perspectivesFr/media");
 		$data = json_decode($data, true);
 	} catch (Exception $e) {
 	}
@@ -77,13 +77,8 @@ if (empty($imgCacheRef_content)) {
 		<?php foreach ($data as $insta) :
 
 			$thumb_id = null;
-//			$url = $insta['thumbnail_src'];
-//			echo "<pre>";
-//			print_r($insta);
-//			echo "</pre>";
 			$url = $insta["images"]["standard_resolution"]["url"];
 			$caption = $insta["caption"]["text"];
-			$caption = $url;
 
 			foreach ($imgCacheRef as $cache_id => $cahce_url) {
 
