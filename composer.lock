@@ -4,51 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b4e58c4203585d1f40dc8380cf730453",
-    "content-hash": "c342a898adbebe5520544585b531e6d5",
+    "hash": "7a03d7b143aa36ae04de26c8dd16d108",
+    "content-hash": "97091a64973c1204940dbd83262449fc",
     "packages": [
         {
-            "name": "bolandish/instagram-grabber",
-            "version": "1.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Bolandish/Instagram-Grabber.git",
-                "reference": "2449912ced0606e2a6180f9acc18205acddd23e9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Bolandish/Instagram-Grabber/zipball/2449912ced0606e2a6180f9acc18205acddd23e9",
-                "reference": "2449912ced0606e2a6180f9acc18205acddd23e9",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Bolandish\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Thomas Bolander",
-                    "email": "privat@thomasbolander.dk"
-                }
-            ],
-            "description": "A workaround for the new Instagram policy to get images by hashtag and user id. No need for accesstoken",
-            "time": "2016-06-14 08:37:10"
-        },
-        {
             "name": "eliepse/basic-cache",
-            "version": "0.3.0",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eliepse/Basic-Cache.git",
-                "reference": "5c48f8cd0a38222e0ba87c2a17910e777d34a4a7"
+                "reference": "05686f72270cf748147a5cb518972bf28eb6a84a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eliepse/Basic-Cache/zipball/5c48f8cd0a38222e0ba87c2a17910e777d34a4a7",
-                "reference": "5c48f8cd0a38222e0ba87c2a17910e777d34a4a7",
+                "url": "https://api.github.com/repos/Eliepse/Basic-Cache/zipball/05686f72270cf748147a5cb518972bf28eb6a84a",
+                "reference": "05686f72270cf748147a5cb518972bf28eb6a84a",
                 "shasum": ""
             },
             "require": {
@@ -71,10 +41,10 @@
             ],
             "description": "A very simple cache system",
             "support": {
-                "source": "https://github.com/Eliepse/Basic-Cache/tree/0.3.0",
+                "source": "https://github.com/Eliepse/Basic-Cache/tree/0.3.3",
                 "issues": "https://github.com/Eliepse/Basic-Cache/issues"
             },
-            "time": "2016-09-15 12:38:48"
+            "time": "2016-11-29 13:29:40"
         },
         {
             "name": "eliepse/config-manager",
@@ -114,17 +84,17 @@
         },
         {
             "name": "gregwar/cache",
-            "version": "v1.0.10",
+            "version": "v1.0.12",
             "target-dir": "Gregwar/Cache",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Gregwar/Cache.git",
-                "reference": "0a1a02e4943e95f491b3d2395609247385975622"
+                "reference": "305d0f5a12c0beecbbd7e1de236f59f39e0c0ac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Gregwar/Cache/zipball/0a1a02e4943e95f491b3d2395609247385975622",
-                "reference": "0a1a02e4943e95f491b3d2395609247385975622",
+                "url": "https://api.github.com/repos/Gregwar/Cache/zipball/305d0f5a12c0beecbbd7e1de236f59f39e0c0ac3",
+                "reference": "305d0f5a12c0beecbbd7e1de236f59f39e0c0ac3",
                 "shasum": ""
             },
             "require": {
@@ -153,7 +123,7 @@
                 "file-system",
                 "system"
             ],
-            "time": "2014-09-24 11:23:30"
+            "time": "2016-09-23 08:16:04"
         },
         {
             "name": "gregwar/image",

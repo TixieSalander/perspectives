@@ -19,6 +19,7 @@ return [
 
 	'paths' => [
 		'default' => 'cache/',
+		'data'    => 'cache/',
 		'url'     => 'cache/img/',
 	],
 
