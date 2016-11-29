@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "eliepse/basic-cache",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Eliepse/Basic-Cache.git",
-                "reference": "ab0971417476daf680a9b6273ae21b66dcaca17d"
+                "reference": "05686f72270cf748147a5cb518972bf28eb6a84a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Eliepse/Basic-Cache/zipball/ab0971417476daf680a9b6273ae21b66dcaca17d",
-                "reference": "ab0971417476daf680a9b6273ae21b66dcaca17d",
+                "url": "https://api.github.com/repos/Eliepse/Basic-Cache/zipball/05686f72270cf748147a5cb518972bf28eb6a84a",
+                "reference": "05686f72270cf748147a5cb518972bf28eb6a84a",
                 "shasum": ""
             },
             "require": {
@@ -41,10 +41,10 @@
             ],
             "description": "A very simple cache system",
             "support": {
-                "source": "https://github.com/Eliepse/Basic-Cache/tree/0.3.2",
+                "source": "https://github.com/Eliepse/Basic-Cache/tree/0.3.3",
                 "issues": "https://github.com/Eliepse/Basic-Cache/issues"
             },
-            "time": "2016-09-17 20:49:02"
+            "time": "2016-11-29 13:29:40"
         },
         {
             "name": "eliepse/config-manager",
