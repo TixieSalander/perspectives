@@ -1,10 +1,10 @@
-var gulp						= require('gulp');
-var less						= require('gulp-less');
+var gulp				= require('gulp');
+var less				= require('gulp-less');
 var autoprefixer		= require('gulp-autoprefixer');
-var csscomb					= require('gulp-csscomb');
-var imagemin				= require('gulp-imagemin');
+var csscomb				= require('gulp-csscomb');
+var imagemin			= require('gulp-imagemin');
 var browserSync			= require('browser-sync');
-var reload					= browserSync.reload;
+var reload				= browserSync.reload;
 
 var paths = {
 	less: {
