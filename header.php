@@ -14,15 +14,7 @@ include_once __DIR__ . '/vendor/autoload.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 
 	<title>
-		<?php if (wp_title('', false)) {
-			wp_title('');
-			echo ' &#8226; ';
-			bloginfo('name');
-		} else {
-			bloginfo('name');
-			echo ' &#8226; ';
-			bloginfo('description');
-		} ?>
+		<?php wp_title(''); ?>
 	</title>
 
 	<meta name="description" content="Description">
