@@ -52,8 +52,8 @@ include_once __DIR__ . '/vendor/autoload.php';
 			"topSocial__item",
 			 ["rel"   => "nofollow"]); ?>
 
-		<button class="topSearch" data-js="topSearchButton"><img class="topSearch__icon"
-		                                                         src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
+		<button class="topSearch" data-js="topSearchButton">
+			<img class="topSearch__icon" src="<?= bloginfo("template_directory") ?>/img/ico-search.svg" alt="Rechercher"/>
 		</button>
 	</div>
 </div>
