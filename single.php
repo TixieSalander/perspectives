@@ -20,10 +20,10 @@ if (have_posts()) :
 	<!-- Single article -->
 	<div class="container">
 		<section class="single">
-			<div class="single-content">
+			<div class="single-content" itemscope itemtype="http://schema.org/Article">
 				<div class="single-article">
 					<div class="single-article__head mt3">
-						<h1 class="single-article__title"><?= get_the_title() ?></h1>
+						<h1 class="single-article__title" itemprop="name"><?= get_the_title() ?></h1>
 						<div class="single-article__info">
 							<?php
 							$cats = get_the_category();
@@ -35,14 +35,14 @@ if (have_posts()) :
 								$cat_link = get_category_link($cat->cat_ID);
 								$cat_name = $cat->cat_name;
 
-								$cat_html[] = "<a href=\"$cat_link\">$cat_name</a>";
+								$cat_html[] = "<a href=\"$cat_link\" itemprop=\"about\">$cat_name</a>";
 							}
 
 							?>
-							Publié <?php echo empty($cat_html) ? 'le ' . get_the_date() : implode(', ', $cat_html) . ' • Le ' . get_the_date(); ?>
+							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') . '</span>'; ?>
 						</div>
 					</div>
-					<div class="single-article__content">
+					<div class="single-article__content" itemprop="articleBody">
 
 						<?php the_content(); ?>
 
@@ -53,10 +53,10 @@ if (have_posts()) :
 				<div class="single-author single-author--fullwidth">
 					<span class="single-author__title single-author__title--fullwidth">L'auteur·e</span>
 					<div class="single-author__avatar single-author__avatar--fullwidth">
-						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
+						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar" itemprop="image"/>
 					</div>
 					<div class="single-author__about single-author__about--fullwidth">
-						<span class="single-author__name single-author__name--fullwidth"><?= the_author_meta('display_name') ?></span>
+						<span class="single-author__name single-author__name--fullwidth" itemprop="author"><?= the_author_meta('display_name') ?></span>
 						<span class="single-author__bio single-author__bio--fullwidth"><?= the_author_meta('description') ?></span>
 						<?php
 						//						$url = get_the_author_meta('user_url');
@@ -134,17 +134,17 @@ if (have_posts()) :
 	<!-- SINGLE ARTICLE -->
 	<div class="container">
 		<section class="single">
-			<div class="single-content">
+			<div class="single-content" itemscope itemtype="http://schema.org/Article">
 				<div class="single-head">
 					<?= the_post_thumbnail( 'large', array( 'class' => 'single-head__image') ) ?>
 				</div>
 				<div class="single-author">
 					<span class="single-author__title">L'auteur·e</span>
 					<div class="single-author__avatar">
-						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
+						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar" itemprop="image"/>
 					</div>
 					<div class="single-author__about">
-						<span class="single-author__name"><?= the_author_meta('display_name') ?></span>
+						<span class="single-author__name" itemprop="author"><?= the_author_meta('display_name') ?></span>
 						<span class="single-author__bio"><?= the_author_meta('description') ?></span>
 						<?php
 						//						$url = get_the_author_meta('user_url');
@@ -158,7 +158,7 @@ if (have_posts()) :
 				</div>
 				<div class="single-article">
 					<div class="single-article__head">
-						<h1 class="single-article__title"><?= get_the_title() ?></h1>
+						<h1 class="single-article__title" itemprop="name"><?= get_the_title() ?></h1>
 						<div class="single-article__info">
 							<?php
 							$cats = get_the_category();
@@ -170,14 +170,14 @@ if (have_posts()) :
 								$cat_link = get_category_link($cat->cat_ID);
 								$cat_name = $cat->cat_name;
 
-								$cat_html[] = "<a href=\"$cat_link\">$cat_name</a>";
+								$cat_html[] = "<a href=\"$cat_link\" itemprop=\"about\">$cat_name</a>";
 							}
 
 							?>
-							Publié <?php echo empty($cat_html) ? 'le ' . get_the_date() : implode(', ', $cat_html) . ' • Le ' . get_the_date(); ?>
+							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') . '</span>'; ?>
 						</div>
 					</div>
-					<div class="single-article__content">
+					<div class="single-article__content" itemprop="articleBody">
 
 						<?php the_content(); ?>
 
