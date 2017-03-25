@@ -21,9 +21,27 @@ if (have_posts()) :
 	<div class="container">
 		<section class="single">
 			<div class="single-content" itemscope itemtype="http://schema.org/Article">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<span class="single-head" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+						<?php $image_data = wp_get_attachment_metadata ( get_post_thumbnail_id( $post_id ) ); ?>
+						<meta itemprop="url" content="<?php the_post_thumbnail_url(); ?>" />
+						<meta itemprop="width" content="<?php echo $image_data['width']; ?>" />
+						<meta itemprop="height" content="<?php echo $image_data['height']; ?>" />
+
+					</span>
+				<?php endif; ?>
 				<div class="single-article">
 					<div class="single-article__head mt3">
 						<h1 class="single-article__title" itemprop="name"><?= get_the_title() ?></h1>
+
+						<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+							<meta itemprop="name" content="Perspectives" />
+							<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+								<link itemprop="url" href="<?= $theme_path ?>/img/favicon.png" />
+							</span>
+						</span>
+						<meta itemprop="headline" content="<?php echo get_the_excerpt(); ?>" />
+
 						<div class="single-article__info">
 							<?php
 							$cats = get_the_category();
@@ -39,7 +57,7 @@ if (have_posts()) :
 							}
 
 							?>
-							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') . '</span>'; ?>
+							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date('j F Y') . '</span>'; ?>
 						</div>
 					</div>
 					<div class="single-article__content" itemprop="articleBody">
@@ -53,7 +71,7 @@ if (have_posts()) :
 				<div class="single-author single-author--fullwidth">
 					<span class="single-author__title single-author__title--fullwidth">L'auteur·e</span>
 					<div class="single-author__avatar single-author__avatar--fullwidth">
-						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar" itemprop="image"/>
+						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
 					</div>
 					<div class="single-author__about single-author__about--fullwidth">
 						<span class="single-author__name single-author__name--fullwidth" itemprop="author"><?= the_author_meta('display_name') ?></span>
@@ -135,13 +153,24 @@ if (have_posts()) :
 	<div class="container">
 		<section class="single">
 			<div class="single-content" itemscope itemtype="http://schema.org/Article">
+				<?php if ( has_post_thumbnail() ) : ?>
+					<div class="single-head" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+						<?php $image_data = wp_get_attachment_metadata ( get_post_thumbnail_id( $post_id ) ); ?>
+						<meta itemprop="url" content="<?php the_post_thumbnail_url(); ?>" />
+						<meta itemprop="width" content="<?php echo $image_data['width']; ?>" />
+						<meta itemprop="height" content="<?php echo $image_data['height']; ?>" />
+
+						<?= the_post_thumbnail( 'large', array( 'class' => 'single-head__image') ) ?>
+					</div>
+				<?php else : ?>
 				<div class="single-head">
 					<?= the_post_thumbnail( 'large', array( 'class' => 'single-head__image') ) ?>
 				</div>
+				<?php endif; ?>
 				<div class="single-author">
 					<span class="single-author__title">L'auteur·e</span>
 					<div class="single-author__avatar">
-						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar" itemprop="image"/>
+						<img src="<?= get_avatar_url(get_the_author_meta('user_email')); ?>" alt="Avatar"/>
 					</div>
 					<div class="single-author__about">
 						<span class="single-author__name" itemprop="author"><?= the_author_meta('display_name') ?></span>
@@ -159,6 +188,15 @@ if (have_posts()) :
 				<div class="single-article">
 					<div class="single-article__head">
 						<h1 class="single-article__title" itemprop="name"><?= get_the_title() ?></h1>
+
+						<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+							<meta itemprop="name" content="Perspectives" />
+							<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+    							<link itemprop="url" href="<?= $theme_path ?>/img/favicon.png" />
+  							</span>
+						</span>
+						<meta itemprop="headline" content="<?php echo get_the_excerpt(); ?>" />
+
 						<div class="single-article__info">
 							<?php
 							$cats = get_the_category();
@@ -174,7 +212,7 @@ if (have_posts()) :
 							}
 
 							?>
-							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished">' . get_the_date('j F Y') . '</span>'; ?>
+							Publié dans <?php echo empty($cat_html) ? ' • Le <span itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date('j F Y') : implode(', ', $cat_html) . ' • Le <span itemprop="datePublished" content="' . get_the_date('Y-m-d') . '">' . get_the_date('j F Y') . '</span>'; ?>
 						</div>
 					</div>
 					<div class="single-article__content" itemprop="articleBody">
