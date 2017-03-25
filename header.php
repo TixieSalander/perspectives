@@ -17,7 +17,6 @@ include_once __DIR__ . '/vendor/autoload.php';
 		<?php wp_title(''); ?>
 	</title>
 
-	<meta name="description" content="Description">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!--[if lt IE 9]>
