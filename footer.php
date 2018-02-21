@@ -116,7 +116,7 @@ if (empty($imgCacheRef_content)) {
 		<div class="footer__bottom grid-2">
 			<div class="txtcenter">
 				<div class="footer__collectif">
-					<a href="https://collectif.perspectives.design" title="Le collectif Perspectives">
+					<a href="https://collectif-perspectives.fr" title="Le collectif Perspectives">
 						<img src="<?= $theme_path ?>/img/logo-collectif.svg" alt="Le collectif Perspectives"/>
 					</a>
 				</div>
