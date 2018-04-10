@@ -16,13 +16,13 @@ composer install
 2) Build files
 
 ```
-gulp
+npm run gulp
 ```
 
 3) If you want launch a local server that monitor changes
 
 ```
-gulp watch
+npm run gulp watch
 ```
 
 Licence
